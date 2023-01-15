@@ -263,6 +263,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -387,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/cheme/">
-                                <span class="chip bg-color">cheme</span>
+                            <a href="/tags/hexo/">
+                                <span class="chip bg-color">hexo</span>
                             </a>
                         
                     </div>
@@ -426,14 +439,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    11 分
                 </div>
                 
 
@@ -460,73 +473,6 @@
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1869507838&auto=1&height=66"></iframe>
 </div>
 
-<h2 id="换机操作（）"><a href="#换机操作（）" class="headerlink" title="换机操作（）"></a>换机操作（）</h2><blockquote>
-<p>在仓库中创建一个hexo分支并设置为默认</p>
-</blockquote>
-<blockquote>
-<p>在本地配置好ssh连接，并测试是否连通github</p>
-</blockquote>
-<blockquote>
-<p>git clone 这个仓库，因为设置成默认分支，所以直接clone的就是hexo</p>
-</blockquote>
-<blockquote>
-<p>将hexo分支下除了.git的文件全部删除</p>
-</blockquote>
-<blockquote>
-<p>再将源文件中除了.deploy_git的所有文件拷贝到这里，如果安装了主题，需要将主题中的.git文件夹删除</p>
-</blockquote>
-<blockquote>
-<p>添加一个.gitignore文件(可选)</p>
-</blockquote>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">.DS_Store
-Thumbs.db
-db.json
-<span class="token important">*.log</span>
-node_modules/
-public/
-.deploy<span class="token important">*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<blockquote>
-<p>git add .</p>
-</blockquote>
-<blockquote>
-<p>git commit -m “desc”</p>
-</blockquote>
-<blockquote>
-<p>git push origin</p>
-</blockquote>
-<hr>
-<h3 id="换了电脑之后"><a href="#换了电脑之后" class="headerlink" title="换了电脑之后"></a>换了电脑之后</h3><blockquote>
-<p>配置好git的ssh连接</p>
-</blockquote>
-<blockquote>
-<p>安装好Node</p>
-</blockquote>
-<blockquote>
-<p>sudo npm install hexo-cli-g</p>
-</blockquote>
-<blockquote>
-<p>git cloen 备份仓库</p>
-</blockquote>
-<blockquote>
-<p>cd xxx.github.io</p>
-</blockquote>
-<blockquote>
-<p>npm install</p>
-</blockquote>
-<blockquote>
-<p>npm install hexo-deployer-git –save</p>
-</blockquote>
-<blockquote>
-<p>hexo g</p>
-</blockquote>
-<blockquote>
-<p>hexo d</p>
-</blockquote>
-<p>就可以开始写博客了</p>
-<blockquote>
-<p>如果在已经编辑过的电脑上写博客，那么还需要git pull更新一下</p>
-</blockquote>
 <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>本主题<strong>推荐你使用 Hexo 5.0.0 及以上的版本</strong>。如果，你已经有一个自己的 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> 博客了，建议你将 Hexo 升级到最新稳定的版本。</p>
 <p>点击 <a target="_blank" rel="noopener" href="https://codeload.github.com/blinkfox/hexo-theme-matery/zip/master">这里</a> 下载 <code>master</code> 分支的最新稳定版的代码，解压缩后，将 <code>hexo-theme-matery</code> 的文件夹复制到你 Hexo 的 <code>themes</code> 文件夹中即可。</p>
 <p>当然你也可以在你的 <code>themes</code> 文件夹下使用 <code>git clone</code> 命令来下载:</p>
@@ -913,8 +859,8 @@ public/
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/cheme/">
-                                    <span class="chip bg-color">cheme</span>
+                                <a href="/tags/hexo/">
+                                    <span class="chip bg-color">hexo</span>
                                 </a>
                             
                         </div>
@@ -1084,48 +1030,46 @@ public/
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/01/15/theme-install/">
+                <a href="/2023/01/15/cloud/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="theme-install">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="cloud">
                         
-                        <span class="card-title">theme-install</span>
+                        <span class="card-title">cloud</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            hexo+github+cheme部署
+                            服务器部署
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                    博客部署
+                            <a href="/categories/%E6%9D%82%E9%A1%B9/" class="post-category">
+                                    杂项
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cheme/">
-                        <span class="chip bg-color">cheme</span>
+                    <a href="/tags/cloud/">
+                        <span class="chip bg-color">cloud</span>
                     </a>
                     
                 </div>
@@ -1174,8 +1118,8 @@ public/
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cheme/">
-                        <span class="chip bg-color">cheme</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -1415,7 +1359,7 @@ public/
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.2k</span>&nbsp;字
+                class="white-color">3.7k</span>&nbsp;字
             
             
             
