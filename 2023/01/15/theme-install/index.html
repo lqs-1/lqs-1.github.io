@@ -95,58 +95,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-list" style="zoom: 0.6;"></i>
-      
-      <span>Medias</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/musics">
-          
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Musics</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/movies">
-          
-          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Movies</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/books">
-          
-          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Books</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/galleries">
-          
-          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Galleries</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -214,61 +162,6 @@
 			
 			归档
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="javascript:;">
-			
-				<i class="fa-fw fas fa-list"></i>
-			
-			Medias
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-		</a>
-            <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/musics " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Musics</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/movies " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Movies</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/books " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Books</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/galleries " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Galleries</span>
-                  </a>
-                </li>
-              
-            </ul>
           
         </li>
         
@@ -587,6 +480,49 @@
     <span class="token key atrule">url</span><span class="token punctuation">:</span> /archives
     <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>archive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h4 id="二级菜单配置方法"><a href="#二级菜单配置方法" class="headerlink" title="二级菜单配置方法"></a>二级菜单配置方法</h4><p>如果你需要二级菜单则可以在原基本菜单导航的基础上如下操作</p>
+<ol>
+<li>在需要添加二级菜单的一级菜单下添加<code>children</code>关键字(如:<code>About</code>菜单下添加<code>children</code>)     </li>
+<li>在<code>children</code>下创建二级菜单的 名称name,路径url和图标icon.      </li>
+<li>注意每个二级菜单模块前要加 <code>-</code>.     </li>
+<li>注意缩进格式  </li>
+</ol>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">menu</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Index</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>home
+  <span class="token key atrule">Tags</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /tags
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>tags
+  <span class="token key atrule">Categories</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /categories
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>bookmark
+  <span class="token key atrule">Archives</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /archives
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>archive
+  <span class="token key atrule">About</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /about
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>user<span class="token punctuation">-</span>circle<span class="token punctuation">-</span>o
+  <span class="token key atrule">Friends</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> /friends
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>address<span class="token punctuation">-</span>book
+  <span class="token key atrule">Medias</span><span class="token punctuation">:</span>
+    <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>list
+    <span class="token key atrule">children</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Music
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /music
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>music
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Movies
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /movies
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>film
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Books
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /books
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>book
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Galleries
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> /galleries
+        <span class="token key atrule">icon</span><span class="token punctuation">:</span> fas fa<span class="token punctuation">-</span>image<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>执行 <code>hexo clean &amp;&amp; hexo g</code> 重新生成博客文件，然后就可以在文章中对应位置看到你用<code>emoji</code>语法写的表情了。</p>
 <h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>从 Hexo5.0 版本开始自带了 <code>prismjs</code> 代码语法高亮的支持，本主题对此进行了改造支持。</p>
 <p>如果你的博客中曾经安装过 <code>hexo-prism-plugin</code> 的插件，那么你须要执行 <code>npm uninstall hexo-prism-plugin</code> 来卸载掉它，否则生成的代码中会有 <code>&amp;#123;</code> 和 <code>&amp;#125;</code> 的转义字符。</p>
 <p>然后，修改 Hexo 根目录下 <code>_config.yml</code> 文件中 <code>highlight.enable</code> 的值为 <code>false</code>，并将 <code>prismjs.enable</code> 的值设置为 <code>true</code>，主要配置如下：</p>
@@ -638,33 +574,12 @@
   <span class="token key atrule">readCount</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> <span class="token comment"># 阅读次数.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="修改社交链接"><a href="#修改社交链接" class="headerlink" title="修改社交链接"></a>修改社交链接</h3><p>在主题的 <code>_config.yml</code> 文件中，默认支持 <code>QQ</code>、<code>GitHub</code> 和邮箱等的配置。</p>
-<h3 id="修改打赏的二维码图片"><a href="#修改打赏的二维码图片" class="headerlink" title="修改打赏的二维码图片"></a>修改打赏的二维码图片</h3><p>在主题文件的 <code>source/medias/reward</code> 文件中，你可以替换成你的的微信和支付宝的打赏二维码图片。</p>
-<h3 id="配置音乐播放器（可选的）"><a href="#配置音乐播放器（可选的）" class="headerlink" title="配置音乐播放器（可选的）"></a>配置音乐播放器（可选的）</h3><p>要支持音乐播放，在主题的 <code>_config.yml</code> 配置文件中激活music配置即可：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># 是否在首页显示音乐</span>
-<span class="token key atrule">music</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">title</span><span class="token punctuation">:</span>     	    <span class="token comment"># 非吸底模式有效</span>
-    <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-    <span class="token key atrule">show</span><span class="token punctuation">:</span> 听听音乐
-  <span class="token key atrule">server</span><span class="token punctuation">:</span> netease   <span class="token comment"># require music platform: netease, tencent, kugou, xiami, baidu</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> playlist    <span class="token comment"># require song, playlist, album, search, artist</span>
-  <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token number">503838841</span>     <span class="token comment"># require song id / playlist id / album id / search keyword</span>
-  <span class="token key atrule">fixed</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>      <span class="token comment"># 开启吸底模式</span>
-  <span class="token key atrule">autoplay</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>   <span class="token comment"># 是否自动播放</span>
-  <span class="token key atrule">theme</span><span class="token punctuation">:</span> <span class="token string">'#42b983'</span>
-  <span class="token key atrule">loop</span><span class="token punctuation">:</span> <span class="token string">'all'</span>       <span class="token comment"># 音频循环播放, 可选值: 'all', 'one', 'none'</span>
-  <span class="token key atrule">order</span><span class="token punctuation">:</span> <span class="token string">'random'</span>   <span class="token comment"># 音频循环顺序, 可选值: 'list', 'random'</span>
-  <span class="token key atrule">preload</span><span class="token punctuation">:</span> <span class="token string">'auto'</span>   <span class="token comment"># 预加载，可选值: 'none', 'metadata', 'auto'</span>
-  <span class="token key atrule">volume</span><span class="token punctuation">:</span> <span class="token number">0.7</span>       <span class="token comment"># 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</span>
-  <span class="token key atrule">listFolded</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>  <span class="token comment"># 列表默认折叠</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="添加网易云音乐BGM"><a href="#添加网易云音乐BGM" class="headerlink" title="添加网易云音乐BGM"></a>添加网易云音乐BGM</h3><p>首先打开网易云网页版，找到想听的歌曲，然后点击生成外链</p>
+<p>复制如下代码：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">&lt;div align="middle"<span class="token punctuation">></span>这里粘贴刚刚复制的代码&lt;/div<span class="token punctuation">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<blockquote>
-<p><code>server</code>可选<code>netease</code>（网易云音乐），<code>tencent</code>（QQ音乐），<code>kugou</code>（酷狗音乐），<code>xiami</code>（虾米音乐），</p>
-<p><code>baidu</code>（百度音乐）。</p>
-<p><code>type</code>可选<code>song</code>（歌曲），<code>playlist</code>（歌单），<code>album</code>（专辑），<code>search</code>（搜索关键字），<code>artist</code>（歌手）</p>
-<p><code>id</code>获取方法示例: 浏览器打开网易云音乐，点击我喜欢的音乐歌单，浏览器地址栏后面会有一串数字，<code>playlist</code>的<code>id</code></p>
-<p>即为这串数字。</p>
-</blockquote>
+
+<h3 id="修改打赏的二维码图片"><a href="#修改打赏的二维码图片" class="headerlink" title="修改打赏的二维码图片"></a>修改打赏的二维码图片</h3><p>在主题文件的 <code>source/medias/reward</code> 文件中，你可以替换成你的的微信和支付宝的打赏二维码图片。</p>
 <h2 id="文章-Front-matter-介绍"><a href="#文章-Front-matter-介绍" class="headerlink" title="文章 Front-matter 介绍"></a>文章 Front-matter 介绍</h2><h3 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h3><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但我仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
 <table>
 <thead>
@@ -1297,7 +1212,7 @@
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="7270447512"
+                   id="503838841"
                    fixed='true'
                    autoplay='false'
                    theme='#42b983'
