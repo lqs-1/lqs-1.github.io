@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo-dbackup, java,linux,spring,cloud">
+    <meta name="keywords" content="cloud, java,linux,spring,cloud">
     <meta name="description" content="希望你可以记住我 记住我这样活过 这样在你身边呆过">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hexo-dbackup | SGzuibang</title>
+    <title>cloud | SGzuibang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,7 +266,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'd5e8139b6262895c208b9fd9e7a21ecba14eb00445638566fcb77bae14408691';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -279,12 +279,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hexo-dbackup</h1>
+                    <h1 class="description center-align post-title">cloud</h1>
                 </div>
             </div>
         </div>
@@ -400,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/cloud/">
+                                <span class="chip bg-color">cloud</span>
                             </a>
                         
                     </div>
@@ -412,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                博客部署
+                            <a href="/categories/%E6%9D%82%E9%A1%B9/" class="post-category">
+                                杂项
                             </a>
                         
                     </div>
@@ -425,7 +425,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-16
+                    2023-01-15
                 </div>
                 
 
@@ -439,14 +439,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    605
+                    55
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -469,91 +469,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1997527356&auto=1&height=66"></iframe>
-</div>
-
-<h2 id="换机操作前"><a href="#换机操作前" class="headerlink" title="换机操作前"></a>换机操作前</h2><blockquote>
-<p>在仓库中创建一个hexo分支并设置为默认</p>
+                <h2 id="购买vps"><a href="#购买vps" class="headerlink" title="购买vps"></a>购买vps</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://racknerd.com/"><code>racknerd</code></a></p>
 </blockquote>
 <blockquote>
-<p>在本地配置好ssh连接，并测试是否连通github</p>
+<p>username: <a href="mailto:&#x37;&#x34;&#x39;&#48;&#x36;&#50;&#x38;&#x37;&#48;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#x37;&#x34;&#x39;&#48;&#x36;&#50;&#x38;&#x37;&#48;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
 </blockquote>
 <blockquote>
-<p>git clone 这个仓库，因为设置成默认分支，所以直接clone的就是hexo</p>
+<p>password: 20021218lqs</p>
+</blockquote>
+<h2 id="购买DomainName"><a href="#购买DomainName" class="headerlink" title="购买DomainName"></a>购买DomainName</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.namesilo.com/"><code>namesilo</code></a></p>
 </blockquote>
 <blockquote>
-<p>将hexo分支下除了.git的文件全部删除，再将源文件中除了.deploy_git的所有文件拷贝到这里，如果安装了主题，需要将主题中的.git文件夹删除。原理就是hexo的源码和配置不会上传到github，只是上传的.deploy_git里面通过hexo g这个命令生成的静态文件，.deploy_git里面的文件会上传到哪里，这个你在项目目录_config.yaml中配置的，这里配置了上传到哪里，上传到哪个分支，因为这个.deploy_git是可以根据hexo g来生成，所以不用上传,即是说： <code>新拉下来的这个仓库是存放源代码的，如果是第一次做这个操作，需要将其他的文件全部删除，只留下一个.git文件夹，这是仓库信息，然后将源代码里面的除了.deploy_git的所有数据全部复制过来</code></p>
+<p>username: liqisong</p>
 </blockquote>
 <blockquote>
-<p>添加一个.gitignore文件(可选)</p>
+<p>password: @20021218Lqs</p>
 </blockquote>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">.DS_Store
-Thumbs.db
-db.json
-<span class="token important">*.log</span>
-node_modules/
-public/
-.deploy<span class="token important">*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<blockquote>
-<p>git add .</p>
+<h2 id="管理域名"><a href="#管理域名" class="headerlink" title="管理域名"></a>管理域名</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dash.cloudflare.com/"><code>cloudflare</code></a></p>
 </blockquote>
 <blockquote>
-<p>git commit -m “desc”</p>
+<p>username: <a href="mailto:&#x37;&#x34;&#57;&#x30;&#54;&#x32;&#x38;&#55;&#x30;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;">&#x37;&#x34;&#57;&#x30;&#54;&#x32;&#x38;&#55;&#x30;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;</a></p>
 </blockquote>
 <blockquote>
-<p>git push origin</p>
-</blockquote>
-<hr>
-<h2 id="换了电脑之后"><a href="#换了电脑之后" class="headerlink" title="换了电脑之后"></a>换了电脑之后</h2><blockquote>
-<p>配置好git的ssh连接</p>
-</blockquote>
-<blockquote>
-<p>安装好Node</p>
-</blockquote>
-<blockquote>
-<p>sudo npm install hexo-cli-g</p>
-</blockquote>
-<blockquote>
-<p>git cloen 备份仓库</p>
-</blockquote>
-<blockquote>
-<p>cd xxx.github.io</p>
-</blockquote>
-<blockquote>
-<p>npm install</p>
-</blockquote>
-<blockquote>
-<p>npm install hexo-deployer-git –save</p>
-</blockquote>
-<blockquote>
-<p>hexo g</p>
-</blockquote>
-<blockquote>
-<p>hexo d</p>
-</blockquote>
-<p>就可以开始写博客了</p>
-<blockquote>
-<p>如果在已经编辑过的电脑上写博客，那么还需要git pull更新一下</p>
-</blockquote>
-<h2 id="多端操作"><a href="#多端操作" class="headerlink" title="多端操作"></a>多端操作</h2><blockquote>
-<p>在新机子上clone仓库，clone的是源代码分支,然后安装依赖，开始写博客，如果新机子上以前有这个仓库，那么需要git pull更新一下再写</p>
-</blockquote>
-<blockquote>
-<p>在clone的这个仓库中，可以直接写博客，不用删除什么，也可以直接hexo -g -d来将静态页面推送到github，但是每次写完了，静态代码推送完了，然后删除.deploy_git文件夹，最后通过git将源码上传到仓库。</p>
-</blockquote>
-<h2 id="git配置ssh"><a href="#git配置ssh" class="headerlink" title="git配置ssh"></a>git配置ssh</h2><blockquote>
-<p>ssh-keygen -t rsa -C “邮箱” 通过这个来生成rsa密钥</p>
-</blockquote>
-<blockquote>
-<p>生成的ras存放在用户目录下的.ssh文件夹中</p>
-</blockquote>
-<blockquote>
-<p>cat id_rsa.pub 将公钥填写到github</p>
-</blockquote>
-<blockquote>
-<p>ssh -T <a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#103;&#x69;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;</a> 测试是否连上github</p>
+<p>password: @20021218Lqs</p>
 </blockquote>
 
                 
@@ -581,7 +522,7 @@ public/
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lqs-1.github.io/2023/01/16/hexo-dbackup/">https://lqs-1.github.io/2023/01/16/hexo-dbackup/</a>
+                    <a href="https://lqs-1.github.io/2023/01/15/cloud/">https://lqs-1.github.io/2023/01/15/cloud/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,8 +560,8 @@ public/
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/cloud/">
+                                    <span class="chip bg-color">cloud</span>
                                 </a>
                             
                         </div>
@@ -794,19 +735,19 @@ public/
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/01/16/wifi-mi-ma-po-jie/">
+                <a href="/2023/01/16/hexo-dbackup/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="wifi密码破解">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="hexo-dbackup">
                         
-                        <span class="card-title">wifi密码破解</span>
+                        <span class="card-title">hexo-dbackup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Wifi密码暴力破解，不一定成功
+                            hexo数据备份，换机方案
                         
                     </div>
                     <div class="publish-info">
@@ -817,8 +758,8 @@ public/
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
+                                    博客部署
                                 </a>
                             
                             
@@ -828,8 +769,8 @@ public/
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/wifi/">
-                        <span class="chip bg-color">wifi</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -843,19 +784,19 @@ public/
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/15/cloud/">
+                <a href="/2023/01/15/theme-install/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="cloud">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="theme-install">
                         
-                        <span class="card-title">cloud</span>
+                        <span class="card-title">theme-install</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            服务器部署
+                            hexo+github+cheme部署
                         
                     </div>
                     <div class="publish-info">
@@ -866,8 +807,8 @@ public/
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9D%82%E9%A1%B9/" class="post-category">
-                                    杂项
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
+                                    博客部署
                                 </a>
                             
                             
@@ -877,8 +818,8 @@ public/
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cloud/">
-                        <span class="chip bg-color">cloud</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
