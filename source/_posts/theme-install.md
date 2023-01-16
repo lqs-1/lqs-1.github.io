@@ -15,6 +15,59 @@ categories: 博客部署
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1869507838&auto=1&height=66"></iframe>
 </div>
 
+## 换机操作
+
+> 在仓库中创建一个hexo分支并设置为默认
+
+> 在本地配置好ssh连接，并测试是否连通github
+
+> git clone 这个仓库，因为设置成默认分支，所以直接clone的就是hexo
+
+> 将hexo分支下除了.git的文件全部删除
+
+> 再将源文件中除了.deploy_git的所有文件拷贝到这里，如果安装了主题，需要将主题中的.git文件夹删除
+
+> 添加一个.gitignore文件(可选)
+```yaml
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+```
+
+> git add .
+
+> git commit -m "desc"
+
+> git push origin
+
+---
+
+### 换了电脑之后
+> 配置好git的ssh连接
+
+> 安装好Node
+
+> sudo npm install hexo-cli-g
+
+> git cloen 备份仓库
+
+> cd xxx.github.io
+
+> npm install
+
+> npm install hexo-deployer-git --save
+
+> hexo g
+
+> hexo d
+
+就可以开始写博客了
+
+> 如果在已经编辑过的电脑上写博客，那么还需要git pull更新一下
 
 ## 下载
 
