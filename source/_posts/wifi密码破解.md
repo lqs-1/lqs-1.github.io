@@ -12,7 +12,7 @@ categories: Linux
 ---
 
 ### aircrack-ng工具安装
-> 如果你是Kali用户，那么可以跳过这一步，Kali自动，我们以Ubuntu为例：
+> 如果你是Kali用户，那么可以跳过这一步，Kali自带，我们以Ubuntu为例：
 ```shell
 sudo apt install aircrack-ng # 安装aircrack-ng 这个工具kali-linux默认安装了
 ```
