@@ -228,6 +228,11 @@ myProjects:
         iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
         url: https://github.com/lqs-1/petcelsius
         desc: 一个未完成的宠物服务小程序，期待和你一起完成这个项目
+    web-image-generator-somg:
+      icon: fas fa-file-alt
+      iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
+      url: https://github.com/lqs-1/web-image-generator-somg
+      desc: 一个网络图片生成小工具，可用在写博客的时候生成网络图片使用
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
