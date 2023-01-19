@@ -8,7 +8,7 @@ date: 2023-01-19 16:39:14
 password:
 summary: MongoDB基础
 tags: mongo
-categories: 工具
+categories: db
 ---
 # Mongodb
 
