@@ -1,0 +1,1828 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Flask基础, java,linux,spring,cloud">
+    <meta name="description" content="希望你可以记住我 记住我这样活过 这样在你身边呆过">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Flask基础 | SGzuibang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">SGzuibang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">SGzuibang</div>
+        <div class="logo-desc">
+            
+            希望你可以记住我 记住我这样活过 这样在你身边呆过
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lqs-1" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lqs-1" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Flask基础</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/flask/">
+                                <span class="chip bg-color">flask</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Python/" class="post-category">
+                                Python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-01-19
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-01-19
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    25 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Flask"><a href="#Flask" class="headerlink" title="Flask"></a>Flask</h1><h2 id="name-对象说明"><a href="#name-对象说明" class="headerlink" title="__name__对象说明"></a><code>__name__</code>对象说明</h2><p><code>__name__</code>返回的就是当前的模块名字</p>
+<p><code>__name__</code>如果在本文件中使用的话，那么就是<code>__main__</code></p>
+<p><code>__name__</code>如果本文件被导入到别的文件中使用的话，那么就是模块的名字<br>在文件中，被调用的时候，永远不可能等于<code>__main__</code></p>
+<h2 id="Flask-1"><a href="#Flask-1" class="headerlink" title="Flask"></a>Flask</h2><p>创建Flask对象: 名字 = Flask(一个魔法值(以这个为根目录)),括号里面的参数，就表示以这个参数所在的模块为根目录，默认这个目录中的static为静态目录，templates为模板目录</p>
+<p>创建视图: 等于创建一个函数，要显示给浏览器的数据，直接return</p>
+<p>路径配置: 给视图函数加装饰器,格式: app.route(‘路径’)</p>
+<p>运行flask: app.run(),flask的参数:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">,</span>  <span class="token comment"># 创建flask的应用对象，__name__返回的就是当前的模块名字,表示以什么为根目录</span>
+   static_url_path<span class="token operator">=</span><span class="token string">'/python'</span><span class="token punctuation">,</span>  <span class="token comment"># 访问静态的url前缀，不设置的话默认值是static</span>
+   static_folder<span class="token operator">=</span><span class="token string">'static'</span><span class="token punctuation">,</span>  <span class="token comment"># 静态文件的目录，默认就是static</span>
+   template_folder<span class="token operator">=</span><span class="token string">'templates'</span><span class="token punctuation">,</span>  <span class="token comment"># 模板文件的目录，默认的是templates</span>
+   <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="flask的配置"><a href="#flask的配置" class="headerlink" title="flask的配置"></a>flask的配置</h3><blockquote>
+<p>  flask没有Django那种的专门的配置文件，但是可以通过以下的三种方式来配置</p>
+<ul>
+<li>1、使用配置文件:<ul>
+<li>  1、创建一个配置文件xxx.cfg</li>
+<li> 2、app.config.from_pyfile(文件的路径)</li>
+</ul>
+</li>
+<li> 2、使用配置对象:<ul>
+<li>  1、创建一个类，将配置写入</li>
+<li>  2、app.config.from_object(类名)</li>
+</ul>
+</li>
+<li> 3、直接配置    -    app.config[‘DEBUG’] = True<ul>
+<li>  app.config.update(key=v1,k2=v2):一次性配置多个，如果已经存在，那么表示更新</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="获取配置中的参数"><a href="#获取配置中的参数" class="headerlink" title="获取配置中的参数"></a>获取配置中的参数</h3><blockquote>
+<p>   在flask中，配置中除了可以存储flask的配置，也可以存储开发者放的一些数据</p>
+<ul>
+<li>  获取方式一: app.config.get(‘key’)</li>
+<li>   获取方式二: current_app.config.get(‘key’),这是一个模块，也在flask模块中导入，current_app等价于app,有的时候我们拿不到app，所以这个模块可以替代</li>
+</ul>
+</blockquote>
+<h3 id="app-run-的使用"><a href="#app-run-的使用" class="headerlink" title="app.run()的使用"></a>app.run()的使用</h3><blockquote>
+<p>  app.run(host=’x.x.x.x’, port=xxx, debug=True(False)) ,app.run(host=’0.0.0.0’, port=xxx)是万能的</p>
+</blockquote>
+<h3 id="查看路由表"><a href="#查看路由表" class="headerlink" title="查看路由表"></a>查看路由表</h3><blockquote>
+<p> 和Django相比，Flask没有一个直观的路由表，而Django却有urls.py文件可以查看路由表</p>
+<p>  Flask查看路由表: app.url_map，这个方法就可以查看flask的路由表，默认的有static的路由记录，还可以查看请求方式</p>
+<p> 如果某些视图只能用某些请求方式来访问，那么方法就是:@app.route(‘路径’, methods=[请求方式列表])</p>
+<p>  当有多个视图对应同一个url地址的时候，解决方法是：要么修改url,要么修改请求方式</p>
+<p>  当有多个url地址对应一个视图函数的时候(给视图函数多装几个装饰器)，那么就是说这多个url都可以访问这个视图</p>
+<p>  重定向:从flask中导入redirect模块，就可以实现重定向(跳转，两次请求，重定向状态码302),用法:return redirect(url地址)</p>
+<p>  反向解析: 从flask中导入url_for模块,就可以实现反向解析，用法: url = url_for(‘视图函数的名字’, 参数列表)</p>
+</blockquote>
+<h4 id="url带参数"><a href="#url带参数" class="headerlink" title="url带参数"></a>url带参数</h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">@app.route('/路径/&lt;转换器类型:参数名>'):
+    已经实现的转换器类型: int , float , path,如:@app.route('/index/&lt;int:id>'),在访问的时候:127.0.0.1:5000://index/123就可以访问.
+    不加转换器类型就是表示匹配普通的字符串（除了/）:@app.route('/路径/&lt;参数名>')
+    int转换器类型，匹配整数
+    float转换器类型，匹配小数
+    path转换器类型，匹配字符串，但是包括/
+        @app.route('/goods/&lt;int:id>')
+        def goods_detail(id):
+                '''定义商品视图函数'''
+            return f'goods detail page&#123;id&#125;'
+
+    自定义转换器(三步):
+        1、定义自己的转换器:
+            导入from werkzeug.routing import BaseConverter。
+            定义一个转换器类，使其继承BaseConverter.
+        2、将自定义的转换器添加到flask的应用中:
+            app.url_map.converters['转换器名'] = 类名
+        3、使用:
+            @app.route('/路径/&lt;转换器类型:参数名>')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="定义万能转换器"><a href="#定义万能转换器" class="headerlink" title="定义万能转换器"></a>定义万能转换器</h3><pre class="line-numbers language-text" data-language="text"><code class="language-text">说明一点:转换器也可以跟参数（re）: @app.route('/路径/&lt;转换器类型(参数):参数名>')
+方式一、
+    class ReConverter(BaseConverter):
+        '''
+            re万能转换器
+            创建好自定义的转换器之后，我们就将这个自定义的转换器，添加到应用中
+            在视图函数使用的时候，可以跟参数，一个正则
+            工作原理:
+                在访问网址的时候，给定参数，在服务器接收到数据时，会根据转换器的正则来判断时候是一个非法的数据
+        '''
+        # url_map是一个固定的参数,必须调用父类的初始化方法，也必须传入这个参数
+        def __init__(self, url_map, regex):
+            super().__init__(url_map)
+            # self.regex是BaseConverter中的参数（接收正则）,他是专门来看看你自定义的转换器是什么样的一个转换器，接收参数（re）
+            # 将正则表达式的参数保存到对象的属性中，flask会去使用这个属性来进行正则匹配
+            self.regex = regex
+    # 加到应用中
+    app.url_map.converters['re'] = ReConverter
+    @app.route("/goods/&lt;re(r'1[34578]\d&#123;9&#125;'):id>")
+    def goods_detail(id):
+        '''定义商品视图函数'''
+        return f'goods detail page&#123;id&#125;'
+方式二、
+    class ReConverter(BaseConverter):
+        '''
+            re万能转换器
+            创建好自定义的转换器之后，我们就将这个自定义的转换器，添加到应用中
+            在视图函数使用的时候，可以跟参数，一个正则
+            工作原理:
+                在访问网址的时候，给定参数，在服务器接收到数据时，会根据转换器的正则来判断时候是一个非法的数据
+        '''
+        # url_map是一个固定的参数,必须调用父类的初始化方法，也必须传入这个参数
+        def __init__(self, url_map):
+            super().__init__(url_map)
+            # self.regex是BaseConverter中的参数（接收正则）,他是专门来看看你自定义的转换器是什么样的一个转换器，接收参数（re）
+            # 将正则表达式的参数保存到对象的属性中，flask会去使用这个属性来进行正则匹配
+            self.regex = r'1[34578]\d&#123;9&#125;'
+    # 加到应用中
+    app.url_map.converters['re'] = ReConverter
+    @app.route("/goods/&lt;re:id>")
+    def goods_detail(id):
+        '''定义商品视图函数'''
+        return f'goods detail page&#123;id&#125;'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="高级的转换器应用"><a href="#高级的转换器应用" class="headerlink" title="高级的转换器应用"></a>高级的转换器应用</h3><pre class="line-numbers language-text" data-language="text"><code class="language-text">class ReConverter(BaseConverter):
+    '''
+        re万能转换器
+        创建好自定义的转换器之后，我们就将这个自定义的转换器，添加到应用中
+        在视图函数使用的时候，可以跟参数，一个正则
+        工作原理:
+            在访问网址的时候，给定参数，在服务器接收到数据时，会根据转换器的正则来判断时候是一个非法的数据
+    '''
+
+    # url_map是一个固定的参数,必须调用父类的初始化方法，也必须传入这个参数
+    def __init__(self, url_map):
+        super().__init__(url_map)
+        # self.regex是BaseConverter中的参数（接收正则）,他是专门来看看你自定义的转换器是什么样的一个转换器，接收参数（re）
+        # 将正则表达式的参数保存到对象的属性中，flask会去使用这个属性来进行正则匹配
+        self.regex = r'1[34578]\d&#123;9&#125;'
+
+    '''
+        to_python和to_url都是父类中的方法:
+            to_python:在匹配成功以后，请求网址带来的参数会交给to_python做出处理，返回的结果为视图函数的参数
+            to_url:在使用重定向(url_for)的时候使用，url("视图名",参数)
+            使用重定向的时候，被定向的视图函数如果有参数需要匹配，那么，在重定向的时候，在使用url_for()的时候，就会去匹配一次被定向视图使用的转换器，在匹配成功的同时调用to_url方法
+            在to_url中处理以后，会交给to_python处理
+
+    '''
+
+    def to_python(self, value):
+        return value
+
+    def to_url(self, value):
+        return '13443218888'
+
+
+# 加到应用中
+app.url_map.converters['re'] = ReConverter
+
+
+@app.route("/goods/&lt;re:id>")
+def goods_detail(id):
+    '''定义商品视图函数'''
+    return f'goods detail page&#123;id&#125;'
+
+
+@app.route("/index")
+def index():
+    url = url_for("goods_detail", id=13412344321)
+    return redirect(url)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Request对象"><a href="#Request对象" class="headerlink" title="Request对象"></a>Request对象</h2><pre class="line-numbers language-text" data-language="text"><code class="language-text">从flask中导入request和Response
+request中常用的属性:
+    data:获取请求的数据，并转换为字符串，request.data
+    form:获取请求中的表单数据,request.form.get()，获取一对一,request.form.getlist()，获取一对多的数据
+    args:获取url中的参数(http:x.x.x.x:xxx/xxx?city=chengdu)，
+    cookies:获取到cookie，request.cookies.get()
+    headers:获取请求头中的报文:request.headers
+    method:获取请求方式:request.method
+    url:获取请求的url:request.url
+    files:获取上传的文件:  if request.method == 'POST':
+                            file = request.files.get('pic')
+                            file.save(f'./img/&#123;file.filename&#125;')
+    path: 拿到浏览器请求的地址（视图）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="abort"><a href="#abort" class="headerlink" title="abort"></a>abort</h3><pre class="line-numbers language-none"><code class="language-none">从flask中导入abort
+无条件终止视图函数的执行，并返回给前端特定的信息
+用法一、
+    abort（状态码）
+用法二、
+    re &#x3D; Response(&quot;login defete&quot;)
+    abort(re)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="自定义错误信息"><a href="#自定义错误信息" class="headerlink" title="自定义错误信息"></a>自定义错误信息</h3><pre class="line-numbers language-none"><code class="language-none">用户访问的页面不错在的时候，定义一个独立的视图,用@app.errorheader(404)来装饰
+固定写法:
+    @app.errorhandler(404)
+    def header_error(err):
+         return &#39;没有&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="设置响应信息的方法"><a href="#设置响应信息的方法" class="headerlink" title="设置响应信息的方法"></a>设置响应信息的方法</h3><pre class="line-numbers language-none"><code class="language-none">从flask中导入make_response
+方法一:
+    使用:
+    rsp &#x3D; make_response(显示的字符串)
+    rsp.status &#x3D; &#39;999 lqs&#39;  状态码
+    rsp.headers[&#39;lqs&#39;] &#x3D; &#39;lqs&#39;   头信息
+    return rsp
+方法二:
+    return 显示字符串, 状态码, 头信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="json"><a href="#json" class="headerlink" title="json"></a>json</h4><pre class="line-numbers language-none"><code class="language-none">方法一、import json
+    dic &#x3D; &#123;&quot;name&quot;: &quot;lqs&quot;, &quot;age&quot;: 12&#125;
+    json_str &#x3D; json.dumps(dic)
+    print(type(json_str))
+    print(json_str)
+    dic_str &#x3D; json.loads(json_str)
+    print(type(dic_str))
+    print(dic_str)
+json.dumps():字典转json字符串
+json.loads():json字符串转字典
+
+方法二、从flask中导入jsonify
+    return jsonify(dic) ：将字典转成json字符串，并且自动设置头信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="cookie的读写"><a href="#cookie的读写" class="headerlink" title="cookie的读写"></a>cookie的读写</h3><pre class="line-numbers language-none"><code class="language-none">读写和django一样，都是通过response写入，通过request读取
+在有关cookie的操作中，都要 app.config[&quot;SECRET_KEY&quot;] &#x3D; xxxxxx
+    导入:from flask import make_response
+    实例化:resp &#x3D; make_response(显示字符串)
+    设置:resp.set_cookie(&quot;lqs&quot;, &quot;Flask&quot;, max_age&#x3D;3600)
+    读取:request.cookies.get(&#39;lqs&#39;)
+    删除:resp.delete_cookie(&#39;lqs&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="session的读写"><a href="#session的读写" class="headerlink" title="session的读写"></a>session的读写</h3><pre class="line-numbers language-none"><code class="language-none">导入: from flask import session
+设置: session[key] &#x3D; value
+读取: session.get(key)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="钩子"><a href="#钩子" class="headerlink" title="钩子"></a>钩子</h3><pre class="line-numbers language-none"><code class="language-none">类似于django中的中间件
+在请求的时候使用，不是任何请求都会调用，是调用到视图函数的时候，在之前或者之后进行操作
+@app.before_first_request : 第一次请求之前调用
+@app.before_request : 每次请求之前调用
+@app.after_request : 每次请求之后调用（视图函数没有出错的情况）
+@app.teardown_request : 每次请求之后调用（不论是否出错都会调用）
+
+@app.after_request : 对应的视图函数必须带一个参数，用来接收视图函数的返回值，也就是接收在页面上现实的东西
+@app.teardown_request : 对应的视图函数必须带一个参数，用来接收视图函数的返回值，也就是接收在页面上现实的东西<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="g对象"><a href="#g对象" class="headerlink" title="g对象"></a>g对象</h3><pre class="line-numbers language-none"><code class="language-none">from flask import g
+g对象中保存的数据，在一次请求中的，多个函数中可以使用
+使用:
+    g.key &#x3D; value:存
+    xx &#x3D; g.key:取<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="flask-script扩展-实现shell代码-这样子可以和django一样，runserver"><a href="#flask-script扩展-实现shell代码-这样子可以和django一样，runserver" class="headerlink" title="flask_script扩展(实现shell代码),这样子可以和django一样，runserver"></a>flask_script扩展(实现shell代码),这样子可以和django一样，runserver</h3><pre class="line-numbers language-none"><code class="language-none">pip install Flask-Script
+from flask_script import Manager
+manager &#x3D; Manager(flask应用名)
+manager.run()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="flask使用模板文件"><a href="#flask使用模板文件" class="headerlink" title="flask使用模板文件"></a>flask使用模板文件</h3><pre class="line-numbers language-none"><code class="language-none">from flask import render_template
+return render_template(&quot;html模板&quot;, key&#x3D;value, key&#x3D;value)  或者    return render_template(&quot;html模板&quot;, **字典名（组织之后的上下文）)
+在html模板文件中，可以使用过滤器:使用方法:&#123;&#123;value | 过滤器&#125;&#125;如safe就表示转义<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="flask中html模板转义"><a href="#flask中html模板转义" class="headerlink" title="flask中html模板转义"></a>flask中html模板转义</h3><pre class="line-numbers language-none"><code class="language-none">使用方法: &#123;&#123; 处理对象 | 过滤器 &#125;&#125;
+常用过滤器:
+    safe : 禁用转义
+    capitalize : 变量值的首字母转换成大写其余小写
+    lower : 全部转换为小写
+    upper : 全部转换为大写
+    title : 每个单词首字母大写
+    trim  : 去除首尾空格
+    reverse : 字符串反转
+    format : 格式化输出
+    striptags : 渲染之前把所有的html标签去掉
+    first : 取出列表中的第一个元素
+    last : 取出列表中的最后一个元素
+    length : 获取列表的长度
+    sum : 列表数据求和
+    sort : 列表排序
+自定义过滤器:
+    在flask代码中定义
+    第一种方式(函数):
+        定义一个过滤器函数
+        返回值就是过滤后的数据
+        app.add_template_filter(函数名, 过滤器名)就可以注册这个过滤器
+        然后在html模板中使用
+    第二种方式(装饰器:
+        定义一个过滤器函数
+        返回值就是过滤后的数据
+        加装饰器:@app.template_filter(过滤器名)
+        然后在html模板中使用
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="flask使用Flask-WTF"><a href="#flask使用Flask-WTF" class="headerlink" title="flask使用Flask-WTF"></a>flask使用Flask-WTF</h3><pre class="line-numbers language-none"><code class="language-none">可以在服务器端(创建表单模型)校验表单数据，可以设置csrf攻击的关闭
+pip install Flask-WTF
+from flask_wtf import FlaskForm : 这个模块让类继承之后就可以实现创建表单模型
+from wtforms import StringField, PasswordField, SubmitField : 这个wtforms模块中的方法都是关于表单中的各个控件的类型，这里没有写全面
+from wtforms.validators import DataRequired, EqualTo : wtforms下面的validators模块中的方法就是一些校验规则
+
+说明: 在flask中定义的表单模型作用有两个,首先，第一个作用就是不用用户再去自己打表单，可以将表单模型传到模板中生成表单，第二个作用就是验证数据，两个作用是区分开的
+
+定义表单模型类:
+    class LoginForm(FlaskForm):
+    &#39;&#39;&#39;
+        自定义的注册表单抽象类
+            label标签表示设置名称,用中文就使用u&quot;xx&quot;
+            validators表示验证数据，是一个列表类型
+            DataRequired表示必须输入，有一个参数，表示验证失败的时候显示文本
+            EqualTo表示和谁一样，有连个参数，第一个填写和谁一样，第二个填写验证失败的显示文本
+    &#39;&#39;&#39;
+        user_name &#x3D; StringField(label&#x3D;u&quot;用户名&quot;, validators&#x3D;[DataRequired(&quot;用户名不能为空&quot;)])
+        password &#x3D; PasswordField(label&#x3D;r&quot;密码&quot;, validators&#x3D;[DataRequired(&quot;密码不能为空&quot;)])
+        password2 &#x3D; PasswordField(label&#x3D;r&quot;确认密码&quot;, validators&#x3D;[DataRequired(&quot;确认密码不能为空&quot;), EqualTo(&quot;password&quot;, &quot;两次密码不一致&quot;)])
+        submit &#x3D; SubmitField(label&#x3D;u&quot;提交&quot;)
+
+
+        @app.route(&quot;&#x2F;login&quot;, methods&#x3D;[&quot;POST&quot;, &quot;GET&quot;])
+        def login():
+            &#39;&#39;&#39;创建表单对象&#39;&#39;&#39;
+            form &#x3D; LoginForm()
+            # 判断form中的数据是否合理
+            # 如果form中的数据完全满足验证，则返回真，否则返回假
+            if form.validate_on_submit():
+                uname &#x3D; form.user_name.data
+                pwd &#x3D; form.password.data
+                pwd2 &#x3D; form.password2.data
+                print(uname, pwd, pwd2)
+                session[&quot;username&quot;] &#x3D; uname
+                url &#x3D; url_for(&quot;index&quot;)
+                return redirect(url)
+            return render_template(&quot;login.html&quot;, form&#x3D;form)
+
+
+在html模板中生成表单:
+     &lt;form  method&#x3D;&quot;post&quot;&gt;
+        &#123;&#123; form.csrf_token&#125;&#125;
+        &#123;&#123; form.user_name.label &#125;&#125; &#123;&#123; form.user_name &#125;&#125;&lt;br&gt;
+        &#123;% for msg in form.user_name.errors %&#125;
+        &lt;p&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;p&gt;
+        &#123;% endfor %&#125;
+
+        &#123;&#123; form.password.label &#125;&#125; &#123;&#123; form.password &#125;&#125;&lt;br&gt;
+        &#123;% for msg in form.password.errors %&#125;
+        &lt;p&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;p&gt;
+        &#123;% endfor %&#125;
+
+        &#123;&#123; form.password2.label &#125;&#125; &#123;&#123; form.password2 &#125;&#125;&lt;br&gt;
+        &#123;% for msg in form.password2.errors %&#125;
+        &lt;p&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;p&gt;
+        &#123;% endfor %&#125;
+
+        &lt;p&gt;&#123;&#123; form.submit &#125;&#125;&lt;&#x2F;p&gt;
+
+     &lt;&#x2F;form&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="宏的定义和使用"><a href="#宏的定义和使用" class="headerlink" title="宏的定义和使用"></a>宏的定义和使用</h3><pre class="line-numbers language-none"><code class="language-none">在同一个html中定义和使用:
+    没有参数:
+        定义:
+        &#123;% macro input() %&#125;
+         &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;&quot; value&#x3D;&quot;&quot; size&#x3D;&quot;30&quot;&gt;
+        &#123;% endmacro %&#125;
+        使用:
+        &#123;&#123; input() &#125;&#125;
+    有参数:
+    定义:
+    &#123;% macro input(type,name,size) %&#125;
+     &lt;input type&#x3D;&#123;&#123;type&#125;&#125; name&#x3D;&#123;&#123;name&#125;&#125; value&#x3D;&quot;&quot; size&#x3D;&#123;&#123;size&#125;&#125;&gt;
+    &#123;% endmacro %&#125;
+    使用:
+    &#123;&#123; input(&#39;text&#39;, &#39;username&#39;, 40) &#125;&#125;
+
+在不同html中定义和使用:
+    没有参数:
+        定义在macro2.html中:
+        &#123;% macro input() %&#125;
+         &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;&quot; value&#x3D;&quot;&quot; size&#x3D;&quot;30&quot;&gt;
+        &#123;% endmacro %&#125;
+        在macro。html使用:
+        &#123;% import &quot;macro2.html&quot; as 别名 %&#125;
+        &#123;&#123; 别名.input() &#125;&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h3><pre class="line-numbers language-none"><code class="language-none">和django中的模板继承一样: &#123;% extend &quot;模板名&quot; %&#125;  使用 &#123;% block xx %&#125; &#123;% endblock xx %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="flask中一些特殊的方法"><a href="#flask中一些特殊的方法" class="headerlink" title="flask中一些特殊的方法"></a>flask中一些特殊的方法</h3><pre class="line-numbers language-none"><code class="language-none">有些方法和变量不需要传递也可以在模板中直接使用
+config中的方法
+request中的方法
+url_for中的方法
+模板的闪现:
+    闪现就是表示有的信息，只是出现一次
+    在flask中:from flask import flash
+            在视图中使用flash(xxx)来添加信息，可以添加很多条
+    在模板中:
+        &#123;% for x in get_flashed_messages() %&#125;
+        &#123;&#123; x &#125;&#125;
+        &#123;% endfor %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="flask链接数据库"><a href="#flask链接数据库" class="headerlink" title="flask链接数据库"></a>flask链接数据库</h3><pre class="line-numbers language-none"><code class="language-none">pip install flask-sqlalchemy  模型类到sql语句的转换，再将结果转换为模型类对象
+pip install flask-mysqldb   数据库驱动
+from flask_sqlalchemy import SQLAlchemy  可以创建数据库对象
+配置:
+    app.config[&#39;SQLALCHEMY_DATABASE_URI&#39;] &#x3D; &quot;mysql:&#x2F;&#x2F;root:123456@127.0.0.1:3306&#x2F;msfood&quot;
+    app.config[&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;] &#x3D; True   # 配置跟踪,数据库和模型类同步
+创建数据库sqlalchemy工具对象,就可以使用数据库了
+    db &#x3D; SQLAlchemy(app)
+
+
+创建模型类
+class Role(db.Model):
+    &#39;&#39;&#39;身份表&#39;&#39;&#39;
+    __tablename__ &#x3D; &quot;tbl_roles&quot;  # 指明表名
+    id &#x3D; db.Column(db.Integer, primary_key&#x3D;True)
+    name &#x3D; db.Column(db.String(32), unique&#x3D;True)
+    users &#x3D; db.relationship(&quot;User&quot;, backref&#x3D;&quot;role&quot;)
+     def __repr__(self):
+        &#39;&#39;&#39;补充方法,可以让显示对象的时候更直观,类似于__str__方法&#39;&#39;&#39;
+        return f&#39;&#123;self.users&#125;&#39;
+class User(db.Model):
+    &#39;&#39;&#39;用户表&#39;&#39;&#39;
+    __tablename__ &#x3D; &quot;tbl_users&quot;  # 指明数据库的表名
+    id &#x3D; db.Column(db.Integer, primary_key&#x3D;True)  # 主键，自动递增
+    name &#x3D; db.Column(db.String(64), unique&#x3D;True)
+    email &#x3D; db.Column(db.String(128), unique&#x3D;True)
+    password &#x3D; db.Column(db.String(128))
+    role_id &#x3D; db.Column(db.Integer, db.ForeignKey(&quot;tbl_roles.id&quot;))
+
+生成数据表:
+    *第一次生成的时候清除所有数据:
+         db.drop_all()
+    创建所有表
+        db.create_all()
+
+说明:
+    创建表的时候，和底层相关，只要是表中的一行，都是有关底层的，用的都是真实的表的名字
+    users &#x3D; db.relationship(&quot;User&quot;, backref&#x3D;&quot;role&quot;): 这个语句就是表示和底层无关，只和flask中的对象有关，User就是一个模型对象
+        users表和roles表是有关联的（外键）,那么db.relationship就可以让两个表相互拿东西，表示从User模型类中拿出和Role模型有关联的数据
+        backref表示没有定义relationship的对方表中，也可以反推拿出和User模型有关的Role模型的数据
+        使用方法:
+            在Role模型:role.users
+            在user模型中:user.role
+
+添加数据:
+    创建对象:xx &#x3D; 模型(属性&#x3D;值，属性&#x3D;值)
+    session记录对象任务:db.session.add(xx),添加一条数据，db.session.add_all(),添加多条数据
+    提交任务到数据库:db.session.commit()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="sqlalchemy查询"><a href="#sqlalchemy查询" class="headerlink" title="sqlalchemy查询"></a>sqlalchemy查询</h3><pre class="line-numbers language-none"><code class="language-none">用模型类来查询
+模型类.query.all():查询所有数据，返回的是一个列表，可以取出某一个对象，然后读取属性值
+模型类.query.first():返回第一条记录
+模型类.query.get(主键的id):根据主键id获取对象
+模型类.query.filter_by(字段&#x3D;xx,字段&#x3D;&#x3D;xx).all():获取满足条件的所有数据,条件是与
+模型类.query.filter(模型类.字段&#x3D;&#x3D;xx,模型类.字段&#x3D;&#x3D;xx).all():拿出满足条件的所有数据，条件是与
+模型类.query.filter(or_(模型类.字段&#x3D;&#x3D;xx,模型类.字段.endswith(xxx))).all():拿出满足条件的所有数据，条件是或，使用或必须导入from sqlalchemy import or_
+模型类.query.filter(条件).offset(2).limit(3).order_by(模型类.字段.desc()).all():返回满足条件并且忽略前两条数据，取出三条数据然后降序排列的数据，每一个部分都可以单独使用
+db.session.query(模型类.字段, func.count(模型类.字段)).group_by(模型类.字段).all():分组查询，from sqlalchemy import func,func.聚合函数(属性),就可以查出来<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="sqlalchemy修改"><a href="#sqlalchemy修改" class="headerlink" title="sqlalchemy修改"></a>sqlalchemy修改</h4><pre class="line-numbers language-none"><code class="language-none">模型类.query.filter(条件).update(&#123;字段名:值,字段名:值,字段名:值&#125;)
+db.session.commit()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="sqlalchemy删除"><a href="#sqlalchemy删除" class="headerlink" title="sqlalchemy删除"></a>sqlalchemy删除</h4><pre class="line-numbers language-none"><code class="language-none">xx &#x3D; 模型类.query.get(x)
+db.session.delete(xx)
+db.session.commit()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="flask中和django一样使用迁移的方式"><a href="#flask中和django一样使用迁移的方式" class="headerlink" title="flask中和django一样使用迁移的方式"></a>flask中和django一样使用迁移的方式</h4><pre class="line-numbers language-none"><code class="language-none">pip install flask-migrate
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
+
+db &#x3D; SQLAlchemy(app)
+
+创建flask脚本管理工具
+manager &#x3D; Manager(app)
+创建数据库迁移工具对象
+Migrate(app, db)
+向manager对象中添加数据的操作命令
+manager.add_command(&quot;操作的名字&quot;, MigrateCommand)
+
+main中:
+    manager.run()
+终端中:
+    python3 xxx.py 操作的名字 init  : 让他初始化一下，自动创文件夹
+    python3 xxx.py 操作的名字 migrate -m &quot;版本说明信息&quot; : 生成迁移文件（版本说明可以不要），同价与django中的makemigrations
+    多次migrate之后需要更新数据库:python3 xxx.py 操作的名字 upgrade，可以升级同步
+    python3 xxx.py 操作的名字 history : 查看历史修改
+    python3 xxx.py 操作的名字 downgrade 版本编号 : 版本回退
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="flask发送邮件"><a href="#flask发送邮件" class="headerlink" title="flask发送邮件"></a>flask发送邮件</h3><pre class="line-numbers language-none"><code class="language-none">pip install flask-mail
+from flask_mail import Mail, Message
+app &#x3D; Flask(__name__)
+
+app.config.update(
+    DEBUG&#x3D;True,
+    MAIL_SERVER&#x3D;&#39;smtp.qq.com&#39;,
+    MAIL_PROT&#x3D;465,
+    MAIL_USE_TLS&#x3D;True,
+    MAIL_USERNAME&#x3D;&#39;749062870@qq.com&#39;,
+    MAIL_PASSWORD&#x3D;&#39;kttumcufpqasbcii&#39;,
+)
+
+ # sender发送方,recipients接收方列表
+    mail &#x3D; Mail() : 创建mail对象
+    mail.init_app(app) : 初始化mail对象
+    msg &#x3D; Message(&quot;傻逼&quot;, sender&#x3D;&quot;749062870@qq.com&quot;, recipients&#x3D;[&quot;2807175480@qq.com&quot;]) : 设置邮件消息的邮件头
+    msg.body &#x3D; &quot;傻逼&quot;  : 设置邮件的正文
+    mail.send(msg) : 发送邮件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="蓝图（Blueprint）"><a href="#蓝图（Blueprint）" class="headerlink" title="蓝图（Blueprint）"></a>蓝图（Blueprint）</h3><pre class="line-numbers language-none"><code class="language-none">之前写的都在一个py文件中
+蓝图就是分割各个块
+将视图写在其他的py文件中，那么不用再给写在外面的视图加装饰器，可以在有app的py文件中导入，然后通过app.route(&quot;路径&quot;)(视图函数)
+
+蓝图的正解:
+    &#39;&#39;&#39;
+        蓝图和django中的各个应用差不多,一个蓝图自成一块，在主窗口中注册进app里面就可以使用
+        使用方法:
+            创建一个应用目录，再添加一个__init__.py让这个目录成为一个可以调动的包，再__init__.py中定义好蓝图,再到视图中导入这个蓝图，就可以使用，最后再视图使用之后，再到__init__.py中
+            导入视图中使用了蓝图的视图函数。
+            蓝图再使用模板文件和静态文件的时候，和主app不同，主app有默认的配置，而蓝图中没有，需要再定义蓝图的时候手动设置，和主app的设置方法是一样的
+            蓝图在没有定义静态文件目录和模板文件目录的时候，默认是使用主app的，就算配置可静态目录和模板目录，蓝图也是先去主app的静态目录和模板目录查找，没有找到在回到自己的里面去找，这个时候，就是主app的优先级大于蓝图
+            在视图中使用蓝图:
+                1、在__init__.py中from flask import Blueprint
+                2、在__init__.py中定义蓝图,xx &#x3D; Blueprint(&quot;蓝图名&quot;,__name__)
+                3、导入蓝图
+                4、用蓝图装饰，和主app装饰视图一摸一样的
+                5、在__init__.py中导入使用了蓝图的视图函数（导入到蓝图之下）
+                6、在主app的文件中注册蓝图:app.register_blueprint(蓝图, url_prefix&#x3D;&quot;&#x2F;lqs&quot;)，url_prefix表示前缀
+    &#39;&#39;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><pre class="line-numbers language-none"><code class="language-none">在flask中使用单元测试的时候，千万不要动源代码，重新写个测试文件
+import unittest
+导入要测试的flask代码文件
+创建测试类，继承unittest.TestCase
+定义好测试函数
+import unittest
+import json
+from flaskDay14 import Test
+
+class Index(unittest.TestCase):
+    def setUp(self):
+        # 设置flask工作在测试模式下，在测试出错的时候会给出具体错误行
+        Test.app.testing &#x3D; True
+        # 模拟flask客户端,setUp中的代码会在所有函数之前调用
+        self.client &#x3D; Test.app.test_client()
+    def test_index(self):
+        # 模拟请求返回数据
+        ret &#x3D; self.client.post(&quot;&#x2F;index&quot;, data&#x3D;&#123;&quot;username&quot;:&quot;lqs&quot;, &quot;password&quot;:&quot;lqs&quot;&#125;)
+        # 拿到数据
+        resp &#x3D; ret.data
+        # 装成字典
+        resp &#x3D; json.loads(resp)
+        # 断言
+        self.assertIn(&quot;code&quot;, resp)
+        self.assertEqual(resp[&quot;code&quot;], 2)
+
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    # 测试
+    unittest.main()
+
+对所有的测试都可以使用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Somg</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://lqs-1.github.io/2023/01/19/flask-ji-chu/">https://lqs-1.github.io/2023/01/19/flask-ji-chu/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Somg</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/flask/">
+                                    <span class="chip bg-color">flask</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">小伙加油</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/01/19/fdfs-da-jian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="fdfs搭建">
+                        
+                        <span class="card-title">fdfs搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            FastDfs搭建
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/fdfs/">
+                        <span class="chip bg-color">fdfs</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/01/19/django-ji-chu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Django基础">
+                        
+                        <span class="card-title">Django基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            django学习笔记
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/django/">
+                        <span class="chip bg-color">django</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('80')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: SGzuibang<br />'
+            + '文章作者: Somg<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <span id="year">2023</span>
+            <a href="/about" target="_blank">Somg</a>
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> -->
+            <!-- |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">26.5k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2023";
+                    var startMonth = "1";
+                    var startDate = "15";
+                    var startHour = "14";
+                    var startMinute = "35";
+                    var startSecond = "27";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lqs-1" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:liqisong2002@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=749062870" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 749062870" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
