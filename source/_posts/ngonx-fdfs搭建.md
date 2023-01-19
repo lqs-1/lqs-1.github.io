@@ -8,8 +8,8 @@ date: 2023-01-19 16:23:26
 password:
 summary: nginx+fdfs搭建
 tags: 
-	-nginx
-    -fdfs
+	- nginx
+    - fdfs
 categories: 工具
 ---
 ## Nginx+FastDfs
