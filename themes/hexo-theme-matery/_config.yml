@@ -464,6 +464,17 @@ libs:
     ribbonRefresh: /libs/background/ribbon-refresh.min.js
     ribbon_dynamic: /libs/background/ribbon-dynamic.js
     instantpage: /libs/instantpage/instantpage.js
+    buble: /libs/others/buble.js # 添加库
+    popupText: /libs/others/popupText.js
+
+# 是否激活页面点击弹出文字, 只在桌面版网页启用特效
+popupText:
+  enable: true
+
+# banner 冒泡
+buble:
+  enable: true
+
 
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
@@ -588,7 +599,7 @@ instantpage:
 # banner 是否每日切换.
 # 若为 false, 则 banner 默认为 /medias/banner/0.jpg
 banner:
-  enable: false
+  enable: true
 
 #ICP备案信息尾部显示
 icp:

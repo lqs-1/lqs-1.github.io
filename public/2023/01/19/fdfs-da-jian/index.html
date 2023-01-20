@@ -1309,6 +1309,31 @@ $(function () {
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
+	
+	<!-- 弹出文字 -->
+	
+		<script type="text/javascript">
+			// 只在桌面版网页启用特效
+			var windowWidth = $(window).width();
+			if (windowWidth > 768) {
+				document.write(
+					'<script type="text/javascript" src="/libs/others/popupText.js"><\/script>'
+				);
+			}
+		</script>
+	
+	
+	
+	<!-- 冒泡 -->
+	
+		<script type="text/javascript">
+			// 只在桌面版网页启用特效
+			var windowWidth = $(window).width();
+			document.write(
+				'<script type="text/javascript" src="/libs/others/buble.js"><\/script>'
+			);
+		</script>
+	
 
     
 

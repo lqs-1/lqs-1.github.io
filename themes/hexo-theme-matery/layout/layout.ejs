@@ -30,6 +30,31 @@
     <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
     <script async src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.busuanzi) %>"></script>
     <% } %>
+	
+	<!-- 弹出文字 -->
+	<% if (theme.popupText.enable) { %>
+		<script type="text/javascript">
+			// 只在桌面版网页启用特效
+			var windowWidth = $(window).width();
+			if (windowWidth > 768) {
+				document.write(
+					'<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.popupText) %>"><\/script>'
+				);
+			}
+		</script>
+	<% } %>
+	
+	
+	<!-- 冒泡 -->
+	<% if (theme.buble.enable) { %>
+		<script type="text/javascript">
+			// 只在桌面版网页启用特效
+			var windowWidth = $(window).width();
+			document.write(
+				'<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.buble) %>"><\/script>'
+			);
+		</script>
+	<% } %>
 
     <% if (theme.tidio.enable) { %>
         <script src="//code.tidio.co/<%- theme.tidio.public_key %>.js"></script>
