@@ -439,14 +439,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    12 分
                 </div>
                 
 
@@ -787,7 +787,164 @@ service.vgroupMapping.chengdu=default # vgroupMappin后面得可以随便写但�
 <blockquote>
 <p>我们系统得<code>保存订单和锁定库存得分布式事务业务</code><br><img src="https://pub-pce.oss-cn-chengdu.aliyuncs.com/somgWebImageSingleGenerate/2023-01-26/ae981d0870da45cb8d2269487437db23.png"><br><img src="https://pub-pce.oss-cn-chengdu.aliyuncs.com/somgWebImageSingleGenerate/2023-01-26/920150f3ec1046cd93ee69c17d3908e6.png"></p>
 </blockquote>
+<blockquote>
+<p>延时队列示例</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>配置文件</p>
+</blockquote>
+</blockquote>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token comment"># 开启发送端确认，消息抵达交换机的确认，属于生产者确认</span>
+<span class="token key attr-name">spring.rabbitmq.publisher-confirm-type</span><span class="token punctuation">=</span><span class="token value attr-value">simple</span>
+<span class="token comment"># 开启发送端消息抵达队列的确认，属于生产者确认</span>
+<span class="token key attr-name">spring.rabbitmq.publisher-returns</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token comment"># 只要抵达队列，以异步发送优先回调,属于生产者配置</span>
+<span class="token key attr-name">spring.rabbitmq.template.mandatory</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
 
+<span class="token comment"># 设置消费端手动签收</span>
+<span class="token key attr-name">spring.rabbitmq.listener.direct.acknowledge-mode</span><span class="token punctuation">=</span><span class="token value attr-value">manual</span>
+<span class="token comment"># 设置消费端手动签收</span>
+<span class="token key attr-name">spring.rabbitmq.listener.simple.acknowledge-mode</span><span class="token punctuation">=</span><span class="token value attr-value">manual</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<blockquote>
+<p>代码</p>
+</blockquote>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderAutoCancelPublisher</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">RabbitTemplate</span> rabbitClient<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendOrderCancelTimeDelayMessage</span><span class="token punctuation">(</span><span class="token class-name">T</span> message<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+        <span class="token comment">/**
+         * 发消息的时候写好发给哪个交换机，发给哪个route-key，要发送的消息就行了
+         */</span>
+        rabbitClient<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_EXCHANGE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_TIME_DELAY_QUEUE_ROUTE_KEY</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendOrderCancelEdTimeDelayMessage</span><span class="token punctuation">(</span><span class="token class-name">T</span> message<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+        <span class="token comment">/**
+         * 发消息的时候写好发给哪个交换机，发给哪个route-key，要发送的消息就行了
+         */</span>
+        rabbitClient<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_EXCHANGE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_ED_RELEASE_WARE_STOCK_ROUTE_KEY</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// 创建队列和交换机以及绑定关系</span>
+
+    <span class="token comment">/**
+     * 创建交换机,这个交换机上面绑定一个延时队列和一个普通队列
+     * 这个交换机用于绑定订单得延时队列和订单得死信队列   死信(延时队列过期得信息)
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Exchange</span> <span class="token function">orderCancelExchange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">TopicExchange</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_EXCHANGE</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 创建库存得延时队列,配置项:
+     *  这个队列和上面得交换机链接,只要订单保存成功就发送消息到这个队列
+     *  延时到期绑定哪一个交换机
+     *  延时到期绑定哪一个routeKey
+     *  延时时间 毫秒
+     *
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Queue</span> <span class="token function">orderCancelTimeDelayQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> args <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        args<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"x-dead-letter-exchange"</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_EXCHANGE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        args<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"x-dead-letter-routing-key"</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_INVOKE_QUEUE_ROUTE_KEY</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        args<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"x-message-ttl"</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_TIME_DELAY_QUEUE_TTL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Queue</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_TIME_DELAY_QUEUE</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 创建普通队列,用于接收延时队列过期得消息, 接收死信,可以被监听到 然后做逻辑处理
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Queue</span> <span class="token function">orderCancelInvokeQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Queue</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_INVOKE_QUEUE</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 创建绑定关系:延时队列和交换机得关联 绑定交换机和延时队列
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Binding</span> <span class="token function">orderCancelDelayQueueBinding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Binding</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_TIME_DELAY_QUEUE</span><span class="token punctuation">,</span> <span class="token class-name">Binding<span class="token punctuation">.</span>DestinationType</span><span class="token punctuation">.</span><span class="token constant">QUEUE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_EXCHANGE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_TIME_DELAY_QUEUE_ROUTE_KEY</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 创建绑定关系:普通队列和交换机得关联 绑定交换机和死信队列
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Binding</span> <span class="token function">orderCancelInvokeQueueBinding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Binding</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_INVOKE_QUEUE</span><span class="token punctuation">,</span> <span class="token class-name">Binding<span class="token punctuation">.</span>DestinationType</span><span class="token punctuation">.</span><span class="token constant">QUEUE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_EXCHANGE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_INVOKE_QUEUE_ROUTE_KEY</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 创建绑定关系:普通队列和交换机得关联 绑定ware库存得死信队列,不用等待,直接可以被ware监听到
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Binding</span> <span class="token function">orderCancelEdQueueBinding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Binding</span><span class="token punctuation">(</span><span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">WARE_STOCK_RELEASE_QUEUE</span><span class="token punctuation">,</span> <span class="token class-name">Binding<span class="token punctuation">.</span>DestinationType</span><span class="token punctuation">.</span><span class="token constant">QUEUE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_EXCHANGE</span><span class="token punctuation">,</span> <span class="token class-name">Constant</span><span class="token punctuation">.</span><span class="token constant">ORDER_CANCEL_ED_RELEASE_WARE_STOCK_ROUTE_KEY</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+
+
+    <span class="token comment">/**
+     * 定制RabbitTemplate,将确认回调设置进去
+     */</span>
+    <span class="token annotation punctuation">@PostConstruct</span> <span class="token comment">// MyRabbitConfig创建完成以后，执行这个方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initRabbitTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+        rabbitClient<span class="token punctuation">.</span><span class="token function">setConfirmCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RabbitTemplate<span class="token punctuation">.</span>ConfirmCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+            <span class="token comment">/**
+             * 消息抵达exchange执行这个回调
+             * @param correlationData 回调的相关数据 当前消息的唯一关联数据(这个消息的唯一id)
+             * @param ack 消息是否成功收到, 只要消息抵达了服务器就是true
+             * @param cause 失败的原因
+             */</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">confirm</span><span class="token punctuation">(</span><span class="token class-name">CorrelationData</span> correlationData<span class="token punctuation">,</span> <span class="token keyword">boolean</span> ack<span class="token punctuation">,</span> <span class="token class-name">String</span> cause<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// System.out.println("correlationData" + correlationData);</span>
+                <span class="token comment">// System.out.println("ack" + ack);</span>
+                <span class="token comment">// System.out.println("cause" + cause);</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+
+        rabbitClient<span class="token punctuation">.</span><span class="token function">setReturnsCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RabbitTemplate<span class="token punctuation">.</span>ReturnsCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+            <span class="token comment">/**
+             * 只要消息没有投递给指定的队列，就触发这个回调
+             * @param returned 返回的消息和元数据
+             */</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">returnedMessage</span><span class="token punctuation">(</span><span class="token class-name">ReturnedMessage</span> returned<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"returned"</span> <span class="token operator">+</span> returned<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1352,7 +1509,7 @@ service.vgroupMapping.chengdu=default # vgroupMappin后面得可以随便写但�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.9k</span>&nbsp;字
+                class="white-color">30.8k</span>&nbsp;字
             
             
             
