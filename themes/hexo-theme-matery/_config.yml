@@ -398,7 +398,7 @@ githubLink:
 # 请注意：为了保证密码原文不会被泄露到网页中，文章的密码必须是通过'SHA256'加密的，这样就不会被破解.
 verifyPassword:
   enable: true
-  promptMessage: 微信搜索‘无忧小烛’获取文章同意阅读密码
+  promptMessage: 微信搜索‘无忧小烛’，回复‘somg’获取文章同意阅读密码
   errorMessage: 密码错误，将返回主页！
 
 # busuanzi(http://busuanzi.ibruce.info/) website statistics
@@ -601,7 +601,7 @@ instantpage:
 # banner 是否每日切换.
 # 若为 false, 则 banner 默认为 /medias/banner/0.jpg
 banner:
-  enable: true
+  enable: false
 
 #ICP备案信息尾部显示
 icp:

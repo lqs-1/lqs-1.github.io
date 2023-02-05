@@ -268,7 +268,7 @@
     (function() {
         let pwd = 'd5e8139b6262895c208b9fd9e7a21ecba14eb00445638566fcb77bae14408691';
         if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('微信搜索‘无忧小烛’获取文章同意阅读密码')).toString(CryptoJS.enc.Hex)) {
+            if (pwd !== CryptoJS.SHA256(prompt('微信搜索‘无忧小烛’，回复‘somg’获取文章同意阅读密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
                 location.href = '/';
             }
