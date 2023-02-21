@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="本地事务, java,linux,spring,cloud">
+    <meta name="keywords" content="八股文, java,linux,spring,cloud">
     <meta name="description" content="希望你可以记住我 | 记住我这样活过 | 这样在你身边呆过">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>本地事务 | SGzuibang</title>
+    <title>八股文 | SGzuibang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,7 +266,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'd5e8139b6262895c208b9fd9e7a21ecba14eb00445638566fcb77bae14408691';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('微信搜索‘无忧小烛’，回复‘somg’获取文章同意阅读密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -279,12 +279,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">本地事务</h1>
+                    <h1 class="description center-align post-title">八股文</h1>
                 </div>
             </div>
         </div>
@@ -400,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/LocalTransactional/">
-                                <span class="chip bg-color">LocalTransactional</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                     </div>
@@ -412,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/db/" class="post-category">
-                                db
+                            <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-category">
+                                面试题
                             </a>
                         
                     </div>
@@ -425,28 +425,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-26
+                    2023-02-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-01
+                    2023-02-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -469,82 +469,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="本地事务"><a href="#本地事务" class="headerlink" title="本地事务"></a>本地事务</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
-    * 本地事务注解@Transactional
-    *
-    * 事务隔离级别设置
-    * @Transactional(isolatfion = Isolation.REPEATABLE_READ)
-    *
-    *  事务隔离级别(从小到大)：
-    *      READ_UNCOMMITTED(未读提交)：可以读到其他没有提交得事务得数据，这个现象也称之为脏数据，别人可能异常回滚，那么读到得就是无效数据
-    *           公司发工资了，领导把5000元打到singo的账号上，但是该事务并未提交，
-    *           而singo正好去查看账户，发现工资已经到账，是5000元整，非常高 兴。
-    *           可是不幸的是，领导发现发给singo的工资金额不对，是2000元，于是迅速回滚了事务，
-    *           修改金额后，将事务提交，最后singo实际的工资只有 2000元，singo空欢喜一场
-    *
-    *      READ_COMMITTED(读提交)：一个事务可以读取另一个已经提交得事务，多次读取会造成不一样得结果，这个现象称为不可重复读问题
-    *           singo拿着工资卡去消费，系统读取到卡里确实有2000元，而此时她的老婆也正好在网上转账，
-    *           把singo工资卡的2000元转到另一账户，并在 singo之前提交了事务，当singo扣款时，
-    *           系统检查到singo的工资卡已经没有钱，扣款失败，singo十分纳闷，明明卡里有钱
-    *
-    *      REPEATABLE_READ(可重复读)：MySQL得默认隔离级别，在同一个事务里，select得结果是事务开始时间点状态，因此同样得select操作读到得结果是一样得，但是会有幻读现象
-    *          当隔离级别设置为Repeatable read 时，可以避免不可重复读。当singo拿着工资卡去消费时，
-    *          一旦系统开始读取工资卡信息（即事务开始），singo的老婆就不可能对该记录进行修改，也就是singo的老婆不能在此时转账
-    *
-    *          事务A在执行读取操作，需要两次统计数据的总量，前一次查询数据总量后，此时事务B执行了新增数据的操作并提交后，
-    *          这个时候事务A读取的数据总量和之前统计的不一样，就像产生了幻觉一样，平白无故的多了几条数据，成为幻读
-    *      SERIALIZABLE(序列化)：在这个隔离级别下事务都是串行顺序执行得
-    *
-    * 事务得传播行为设置
-    * @Transactional(propagation = Propagation.REQUIRED)
-    *
-    *  事务得传播行为：
-    *      PROPAGATION_REQUIRED:如果当前没有事务，就创建一个新的事务，如果当前存在事务，就加入该事务，使用当前事务得配置 最常用 默认
-    *      PROPAGATION_SUPPORTS:支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就以非事物执行
-    *      PROPAGATION_MANDATORY:支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就以抛出异常
-    *      PROPAGATION_REQUIRED_NEW:创建新事务，无论当前村不存在事务，都创新事务,使用新得配置
-    *      PROPAGATION_NOT_SUPPORTED:以非事务方式执行操作，如果当前存在事务，就吧当前事务挂起
-    *      PROPAGATION_NEVER:以非事务方式执行操作，如果当前存在事务，则抛出异常
-    *      PROPAGATION_NESTED:如果当前存在事务，则在嵌套事务内执行，如果当前没有事务，则执行和PROPAGATION_REQUIRED相似得操作
-    *
-    */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="事务隔离级别设置"><a href="#事务隔离级别设置" class="headerlink" title="事务隔离级别设置"></a>事务隔离级别设置</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 事务隔离级别设置</span>
-<span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>isolation <span class="token operator">=</span> <span class="token class-name">Isolation</span><span class="token punctuation">.</span><span class="token constant">REPEATABLE_READ</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token comment">/**
-         * b();
-         * c();
-         * 如果a，b，c三个事务是在同一个类中，那么b，c做的人和设置都没用，都是和a共用一个事务 直接这样调用就是吧c，b得代码放到了a中
-         *
-         * 因为事务是使用代理对象来控制得，所以调用本类得其他事务，那么其他事务失效，但是可以调用其他类得事务
-         * 如果要调用本类得事务，解决办法如下:
-         *      引入spring-boot-starter-aop,要使用aspectjweaver代理
-         *      开启aspectjweaver动态代理功能@EnableAspectJAutoProxy(exposeProxy = true) 配置是对外暴露代理对象 以后所有得动态代理都是aspectjweaver来创建(没有接口也能创建)
-         *      用代理对象调用
-         */</span>
-
-
-        <span class="token class-name">OrderServiceImpl</span> orderService <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">OrderServiceImpl</span><span class="token punctuation">)</span> <span class="token class-name">AopContext</span><span class="token punctuation">.</span><span class="token function">currentProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        orderService<span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        orderService<span class="token punctuation">.</span><span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// a和b都在一个事务里面</span>
-        <span class="token comment">// c是一个新得事务</span>
-        <span class="token comment">// 出现异常之后，如果a或者b出现异常，那么a和b都会回滚 c不回滚   如果是c出现异常，只是c回滚</span>
-        <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="事务的传播行为设置"><a href="#事务的传播行为设置" class="headerlink" title="事务的传播行为设置"></a>事务的传播行为设置</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 事务得传播行为设置</span>
-<span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>propagation <span class="token operator">=</span> <span class="token class-name">Propagation</span><span class="token punctuation">.</span><span class="token constant">REQUIRED</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-
-<span class="token punctuation">&#125;</span>
-
-<span class="token comment">// 事务得传播行为设置</span>
-<span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>propagation <span class="token operator">=</span> <span class="token class-name">Propagation</span><span class="token punctuation">.</span><span class="token constant">REQUIRES_NEW</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="面向对象的特征"><a href="#面向对象的特征" class="headerlink" title="面向对象的特征"></a>面向对象的特征</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>封装隐藏了类的内部实现机制，就和方法封装了一些内部实现一样，可以在不影响使用的情况下改变类的内部的结构同时保护了数据。增加了代码的可维护性以及便于修改。封装好的代码可以复用，增加了代码的复用性。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>子类可以使用父类的方法，猫狗都是动物，可以继承相同的属性，同时写自己不同的方法，是一种复用的概念。也是增加了代码的复用性。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>第一要有继承，第二要有重写，第三父类引用指向子类对象。增加了代码的可移植性，健壮性，灵活性。</p>
+<h1 id="强软弱虚Java中的引用类型"><a href="#强软弱虚Java中的引用类型" class="headerlink" title="强软弱虚Java中的引用类型"></a>强软弱虚Java中的引用类型</h1><h2 id="Java中的引用类型有哪几种"><a href="#Java中的引用类型有哪几种" class="headerlink" title="Java中的引用类型有哪几种"></a>Java中的引用类型有哪几种</h2><h3 id="强引用"><a href="#强引用" class="headerlink" title="强引用"></a>强引用</h3><p>我们平时new的对象都是强引用，只要有引用指向这个对象，这个对象就不会被回收（gc的时候），如何让引用没有指向？那就是引用对象=null，在gc的时候就会被回收。有指向的时候不会被回收。</p>
+<h3 id="软引用"><a href="#软引用" class="headerlink" title="软引用"></a>软引用</h3><p>被SoftReference包装的对象，表示有一个引用对象指向SoftRefrence是强引用，而SoftRefrence指向被包装的对象为软引用。调用get方法可以拿到这个软引用对象。在内存空间充足的情况下不会被gc回收，在空间不足的时候软引用会自动gc回收。空间狗的时候，随便分配，当强引用要分配空间，且空间不足的时候，就会将软引用挤掉。一般在缓存中会经常使用软引用。</p>
+<h3 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h3><p>被WeakRefrence包装的对象，表示有一个引用对象指向WeakRefrence是强引用，而WeakRefrence指向被包装的对象为弱引用，调用get方法可以拿到这个弱引用对象，不管内存空间够不够，都会被gc回收。和ThreadLocal的关系比较大。</p>
+<h3 id="虚引用（不重要）"><a href="#虚引用（不重要）" class="headerlink" title="虚引用（不重要）"></a>虚引用（不重要）</h3><p>被PhantomReference包装的对象，不能获取到这个对象，get方法返回的是null，不是给业务人员用的，虚引用指向的对象是给gc回收对象用的，堆外内存使用（不归jvm管的内存），如果一个对象管理了一个堆外内存，当这个对象被干掉的时候，这个堆外的内存应该也被干掉，虚引用就是解决这个问题的，关联一个引用队列。<br>虚引用，顾名思义，就是形同虚设，与其他几种引用都不太一样，一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例，而且它的 get() 方法仅仅是返回一个null，也就是说将永远无法通过虚引用来获取对象，虚引用必须要和 ReferenceQueue 引用队列一起使用</p>
+<h3 id="引用队列（ReferenceQueue）（不重要）"><a href="#引用队列（ReferenceQueue）（不重要）" class="headerlink" title="引用队列（ReferenceQueue）（不重要）"></a>引用队列（ReferenceQueue）（不重要）</h3><p>引用队列可以与软引用、弱引用以及虚引用一起配合使用，当垃圾回收器准备回收一个对象时，如果发现它还有引用，那么就会在回收对象之前，把这个引用加入到与之关联的引用队列中去。ReferenceQueue内部数据结构是一个链表，链表里的元素是加入进去的Reference实例，然后通过wait和notifyAll与对象锁实现生产者和消费者，通过这种方式模拟一个队列。ReferenceQueue是使用wati()和notifyAll()实现生产者和消费者模式的一个具体场景。</p>
+<h2 id="ThreadLocal你了解吗"><a href="#ThreadLocal你了解吗" class="headerlink" title="ThreadLocal你了解吗"></a>ThreadLocal你了解吗</h2><p>使用弱引用做的，第一感觉，ThreadLocal是个容器，可以给里面装对象，可以指定里面装什么类型的对象，装的也是引用，指定的是对象。特点是在同一个线程中才能读到数据。<br>给ThreadLocal中填充对象的时候，会拿到当前线程，然后获取当前线程的map，然后将值保存到当前map中，每个线程的map都是独立的，所以ThreadLocal只能在同一个线程中共享数据。<br>给Theadlocal中填充值的时候，最终是填充到当前线程的map中，而我们set的时候只是传递了value，key没有我们自己传递，这个key就是ThreadLocal对象<br>总体流程就是填充值的时候，拿到当前线程，再拿到当前线程的map，往这个map填充东西的时候，key是ThreadLocal对象，value是我们要保存的数据，在填充map的时候，使用了一个Entry出来，这个Entry继承了WeakRefrence对象，在这里调用了WeakRefrence的构造方法，把key的引用设置成了弱引用，意思就是说创建ThreadLoacl的时候有一个强引用指向她，在set值的时候，map的key还有一个弱引用指向它。</p>
+<h2 id="ThreadLocal应用在什么地方"><a href="#ThreadLocal应用在什么地方" class="headerlink" title="ThreadLocal应用在什么地方"></a>ThreadLocal应用在什么地方</h2><p>Spring框架的@Trasactional注解，数据库连接对象都放在ThreadLocal中，在方法中调用其他方法的时候都用的同一个连接对象，这样才能处理事务。</p>
+<h2 id="ThreadLocal会产生内存泄露你了解吗"><a href="#ThreadLocal会产生内存泄露你了解吗" class="headerlink" title="ThreadLocal会产生内存泄露你了解吗"></a>ThreadLocal会产生内存泄露你了解吗</h2><p>创建ThreadLoacl的时候有一个强引用指向她，在set值的时候，map的key还有一个弱引用指向它，这样在ThreadLocal不用的时候，可以将引用设置为null，gc可以直接回收，如果把key指向ThreadLocal这个引用设置为强引用，那么如果map有值的话，ThreadLocal就不会被回收，就会造成内存泄露。在使用了ThreadLocal的值之后，如果不将map的值移除，那么value的值也是强引用也会导致内存泄露问题，所以当ThreadLocal对象使用完成之后一定要用remove方法清除map的值。弱引用解决key，remove解决value。value不能使用弱引用，主要是因为没有一个强引用指向value，只有一个弱引用的话，会直接gc掉。</p>
+<h1 id="ACID是靠什么保证的"><a href="#ACID是靠什么保证的" class="headerlink" title="ACID是靠什么保证的"></a>ACID是靠什么保证的</h1><p>原子性：由undolog日志来保证，他记录了需要回滚的日志信息，事务回滚时撤销已经执行成功的sql</p>
+<p>一致性：由原子性，隔离性，持久性共同保证。</p>
+<p>隔离性：是由MVCC来保证，事务之间相互隔离，多版本并发控制。</p>
+<p>持久性：是由redolog来保证的，mysql修改数据的时候会在redolog中记录一份日志数据，就栓数据没有保存成功，只要日志保存成功了，数据仍然不会丢失。</p>
+<h1 id="BeanFactory和ApplicationContext区别"><a href="#BeanFactory和ApplicationContext区别" class="headerlink" title="BeanFactory和ApplicationContext区别"></a>BeanFactory和ApplicationContext区别</h1>
                 
             </div>
             <hr/>
@@ -570,7 +510,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lqs-1.github.io/2023/01/26/ben-di-shi-wu/">https://lqs-1.github.io/2023/01/26/ben-di-shi-wu/</a>
+                    <a href="https://lqs-1.github.io/2023/02/14/ba-gu-wen/">https://lqs-1.github.io/2023/02/14/ba-gu-wen/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -608,8 +548,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/LocalTransactional/">
-                                    <span class="chip bg-color">LocalTransactional</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
                                 </a>
                             
                         </div>
@@ -783,31 +723,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/01/26/fen-bu-shi-shi-wu/">
+                <a href="/2023/02/21/gong-zuo-di-yi-tian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="分布式事务">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="工作第一天">
                         
-                        <span class="card-title">分布式事务</span>
+                        <span class="card-title">工作第一天</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            java分布式事务解决方案
+                            工作的第一天，安排的任务
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-21
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/db/" class="post-category">
-                                    db
+                            <a href="/categories/ip/" class="post-category">
+                                    ip
                                 </a>
                             
                             
@@ -817,8 +757,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DistributedTransactional/">
-                        <span class="chip bg-color">DistributedTransactional</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -832,31 +772,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/26/mysql-dao-ru-dao-chu/">
+                <a href="/2023/02/01/si-chuan-wu-lian-shu-zhi-ke-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="mysql导入导出">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="四川物连数智科技">
                         
-                        <span class="card-title">mysql导入导出</span>
+                        <span class="card-title">四川物连数智科技</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            mysql数据导入导出
+                            四川物连数智科技面试指南
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/db/" class="post-category">
-                                    db
+                            <a href="/categories/%E6%8C%87%E5%8D%97/" class="post-category">
+                                    指南
                                 </a>
                             
                             
@@ -866,8 +806,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mysql/">
-                        <span class="chip bg-color">mysql</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                 </div>
