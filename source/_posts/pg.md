@@ -45,6 +45,18 @@ pg_dump -p port -U username --no-password -v -cC -b -t schema.view|table -t sche
 pg_dump -p 11543 -U postgres --no-password -v -cC -b  -t onis.view_visit -t onis.view_study_all -d coreonisdb > 1.sql
 ```
 
+```shell
+pg_dump -p 11543 -U postgres --no-password -v -cC -b -t onis.view_visit -t onis.view_study_all -d tmonisdatadesc > 1.sql
+```
+
+```shell
+pg_dump -p 11543 -U postgres --no-password -v -cC -b -t onis.view_study -t onis.view_study_flow -t onis.view_studyrecord -t onis.studyvisit -t onis.view_studyvisit_flow -d tmonisdatadesc > 2.sql
+```
+
+```shell
+pg_dump -p 11543 -U postgres --no-password -v -cC -b -t onis.view_* -t onis.casesearchproject -T onis.view_visit -T onis.view_study_all -T onis.view_study -T onis.view_study-_flow -T onis.view_studyrecord -T view_studyvisit -T onis.view_studyvisit_flow  -d tmonisdatadesc > 3.sql
+```
+
 ## 恢复
 
 ### 格式
