@@ -15,7 +15,9 @@ categories: sql
 
 看文档的方法，对表和视图都没有用，可能是版本的原因
 
-### 格式
+### 备份数据表或者视图
+
+#### 格式
 
 ```shell
 pg_dump -p port -U username --no-password -v -cC -b -t schema.view|table -t schema.view|table -T schema.view|table -T schema.view|table -d database > xxx.sql
@@ -39,7 +41,7 @@ pg_dump -p port -U username --no-password -v -cC -b -t schema.view|table -t sche
  
 > `-d` 属于哪个数据库
 
-### 例子
+#### 例子
 
 ```shell
 pg_dump -p 11543 -U postgres --no-password -v -cC -b  -t onis.view_visit -t onis.view_study_all -d coreonisdb > 1.sql
@@ -57,9 +59,9 @@ pg_dump -p 11543 -U postgres --no-password -v -cC -b -t onis.view_study -t onis.
 pg_dump -p 11543 -U postgres --no-password -v -cC -b -t onis.view_* -t onis.casesearchproject -T onis.view_visit -T onis.view_study_all -T onis.view_study -T onis.view_study-_flow -T onis.view_studyrecord -T view_studyvisit -T onis.view_studyvisit_flow  -d tmonisdatadesc > 3.sql
 ```
 
-## 恢复
+### 恢复
 
-### 格式
+#### 格式
 
 ```shell
 psql -p port -d database -f backupfile
@@ -71,7 +73,7 @@ psql -p port -d database -f backupfile
 
 > `-f` 要恢复的文件
 
-### 例子
+#### 例子
 
 ```shell
 psql -p 11543 -d coreonisdb -f 1.sql

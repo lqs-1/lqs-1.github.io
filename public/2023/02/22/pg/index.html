@@ -439,7 +439,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    302
+                    311
                 </div>
                 
 
@@ -470,7 +470,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="postgresql视图和表的导入导出"><a href="#postgresql视图和表的导入导出" class="headerlink" title="postgresql视图和表的导入导出"></a>postgresql视图和表的导入导出</h2><p>看文档的方法，对表和视图都没有用，可能是版本的原因</p>
-<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-p</span> port <span class="token parameter variable">-U</span> username --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-t</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-t</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-T</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-T</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-d</span> database <span class="token operator">></span> xxx.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="备份数据表或者视图"><a href="#备份数据表或者视图" class="headerlink" title="备份数据表或者视图"></a>备份数据表或者视图</h3><h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-p</span> port <span class="token parameter variable">-U</span> username --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-t</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-t</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-T</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-T</span> schema.view<span class="token operator">|</span>table <span class="token parameter variable">-d</span> database <span class="token operator">></span> xxx.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p><code>-p</code> 指定端口</p>
@@ -499,7 +499,7 @@
 <blockquote>
 <p><code>-d</code> 属于哪个数据库</p>
 </blockquote>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-p</span> <span class="token number">11543</span> <span class="token parameter variable">-U</span> postgres --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-b</span>  <span class="token parameter variable">-t</span> onis.view_visit <span class="token parameter variable">-t</span> onis.view_study_all <span class="token parameter variable">-d</span> coreonisdb <span class="token operator">></span> <span class="token number">1</span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-p</span> <span class="token number">11543</span> <span class="token parameter variable">-U</span> postgres --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-b</span>  <span class="token parameter variable">-t</span> onis.view_visit <span class="token parameter variable">-t</span> onis.view_study_all <span class="token parameter variable">-d</span> coreonisdb <span class="token operator">></span> <span class="token number">1</span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-p</span> <span class="token number">11543</span> <span class="token parameter variable">-U</span> postgres --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-t</span> onis.view_visit <span class="token parameter variable">-t</span> onis.view_study_all <span class="token parameter variable">-d</span> tmonisdatadesc <span class="token operator">></span> <span class="token number">1</span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -507,7 +507,7 @@
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-p</span> <span class="token number">11543</span> <span class="token parameter variable">-U</span> postgres --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-t</span> onis.view_* <span class="token parameter variable">-t</span> onis.casesearchproject <span class="token parameter variable">-T</span> onis.view_visit <span class="token parameter variable">-T</span> onis.view_study_all <span class="token parameter variable">-T</span> onis.view_study <span class="token parameter variable">-T</span> onis.view_study-_flow <span class="token parameter variable">-T</span> onis.view_studyrecord <span class="token parameter variable">-T</span> view_studyvisit <span class="token parameter variable">-T</span> onis.view_studyvisit_flow  <span class="token parameter variable">-d</span> tmonisdatadesc <span class="token operator">></span> <span class="token number">3</span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h2><h3 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">psql <span class="token parameter variable">-p</span> port <span class="token parameter variable">-d</span> database <span class="token parameter variable">-f</span> backupfile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h3><h4 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">psql <span class="token parameter variable">-p</span> port <span class="token parameter variable">-d</span> database <span class="token parameter variable">-f</span> backupfile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p><code>-p</code> 端口</p>
@@ -518,7 +518,7 @@
 <blockquote>
 <p><code>-f</code> 要恢复的文件</p>
 </blockquote>
-<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">psql <span class="token parameter variable">-p</span> <span class="token number">11543</span> <span class="token parameter variable">-d</span> coreonisdb <span class="token parameter variable">-f</span> <span class="token number">1</span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">psql <span class="token parameter variable">-p</span> <span class="token number">11543</span> <span class="token parameter variable">-d</span> coreonisdb <span class="token parameter variable">-f</span> <span class="token number">1</span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
