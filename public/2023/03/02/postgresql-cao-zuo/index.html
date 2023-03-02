@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="闭包, java,linux,spring,cloud">
+    <meta name="keywords" content="PostgreSql操作, java,linux,spring,cloud">
     <meta name="description" content="希望你可以记住我 | 记住我这样活过 | 这样在你身边呆过">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>闭包 | SGzuibang</title>
+    <title>PostgreSql操作 | SGzuibang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,7 +266,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'd5e8139b6262895c208b9fd9e7a21ecba14eb00445638566fcb77bae14408691';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('微信搜索‘无忧小烛’，回复‘somg’获取文章同意阅读密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -279,12 +279,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">闭包</h1>
+                    <h1 class="description center-align post-title">PostgreSql操作</h1>
                 </div>
             </div>
         </div>
@@ -400,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/basic/">
-                                <span class="chip bg-color">basic</span>
+                            <a href="/tags/db/">
+                                <span class="chip bg-color">db</span>
                             </a>
                         
                     </div>
@@ -412,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Python/" class="post-category">
-                                Python
+                            <a href="/categories/pgsql/" class="post-category">
+                                pgsql
                             </a>
                         
                     </div>
@@ -425,28 +425,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-19
+                    2023-03-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-01
+                    2023-03-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    240
+                    568
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -469,38 +469,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><blockquote>
-<p>在一个内部函数中，对外部作用域的变量进行引用，(并且一般外部函数的返回值为内部函数)，那么内部函数就被认为是闭包(python可以返回函数，特性之一)</p>
+                <h2 id="PostgreSql"><a href="#PostgreSql" class="headerlink" title="PostgreSql"></a>PostgreSql</h2><h3 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h3><p>创建本地表空间存放目录</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir -pv &#x2F;home&#x2F;pgsql13&#x2F;postgresql&#x2F;pgdata&#x2F;dir1
+chown -R postgres:postgres &#x2F;home&#x2F;pgsql13&#x2F;postgresql&#x2F;pgdata<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>创建表空间</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create tablespace 表空间名 owner postgres location <span class="token string">'表空间本地目录'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">CREATE DATABASE 数据库名字 WITH OWNER <span class="token operator">=</span> postgres ENCODING <span class="token operator">=</span> <span class="token string">'UTF8'</span> LC_COLLATE <span class="token operator">=</span> <span class="token string">'zh_CN.UTF-8'</span> LC_CTYPE <span class="token operator">=</span> <span class="token string">'zh_CN.UTF-8'</span> TABLESPACE <span class="token operator">=</span> 表空间名 CONNECTION LIMIT <span class="token operator">=</span> -1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="用户角色创建"><a href="#用户角色创建" class="headerlink" title="用户角色创建"></a>用户角色创建</h3><p>角色即用户</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">CREATE ROLE 角色名 WITH LOGIN SUPERUSER NOCREATEDB CREATEROLE INHERIT NOREPLICATION CONNECTION LIMIT <span class="token parameter variable">-1</span> PASSWORD <span class="token string">'密码'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="架构模式创建"><a href="#架构模式创建" class="headerlink" title="架构模式创建"></a>架构模式创建</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 删除自动生成的默认架构即模式</span>
+drop schema public cascade<span class="token punctuation">;</span>
+<span class="token comment"># 每行会创建一个架构即模式 一般角色名和架构名字一样</span>
+CREATE SCHEMA 架构名 AUTHORIZATION 角色名<span class="token punctuation">;</span>
+<span class="token comment"># 每行授权一个架构即模式</span>
+GRANT ALL ON SCHEMA 角色名 TO 结构名 WITH GRANT OPTION<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h3><blockquote>
+<p>备份某个库下面的某个架构的数据包括架构，并指定了用户角色</p>
 </blockquote>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">startAt</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">def</span> <span class="token function">incrementBy</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    	<span class="token keyword">return</span> x<span class="token operator">+</span>y
-    <span class="token keyword">return</span> incrementBy
-    
- a <span class="token operator">=</span> startAt<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
- <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
- <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="闭包的格式"><a href="#闭包的格式" class="headerlink" title="闭包的格式"></a>闭包的格式</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span>……<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span>……<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        代码
-    <span class="token keyword">return</span> func2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-f</span> xxx-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.dmp <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-U</span> 登录用户名 --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">--role</span><span class="token operator">=</span>角色 <span class="token parameter variable">-Fc</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-E</span> UTF8 <span class="token parameter variable">-n</span> 架构 <span class="token parameter variable">-d</span> 数据库名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
-<p>说明两点:</p>
-<ul>
-<li>global:用于函数内,修改全局变量和其他局部变量的时候申明，但是如果不修改全局变量也可以不使用global关键字</li>
-<li>nonlocal:用于内部函数要修改外部函数的变量的时候申明，声明的变量不是局部变量,也不是全局变量,而是外部嵌套函数内的变量</li>
-</ul>
+<p>备份整个库的数据包括架构</p>
 </blockquote>
-<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><blockquote>
-<ul>
-<li>定义:   变量名 = lambda 参数:返回值</li>
-<li>调用:   变量名(参数)</li>
-</ul>
-</blockquote>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">sum</span> <span class="token operator">=</span> <span class="token keyword">lambda</span> arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">:</span> arg1 <span class="token operator">+</span> arg2
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-f</span> xxx-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.dmp <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-U</span> 登录用户名 --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-Fc</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-E</span> UTF8 <span class="token parameter variable">-d</span> 数据库名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>备份整个库的架构不包括数据</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-f</span> xxx-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.dmp <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-U</span> 登录用户名 --no-password <span class="token parameter variable">-s</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-Fc</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-E</span> UTF8 <span class="token parameter variable">-d</span> 数据库名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>备份某个架构的所有视图</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_dump <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-U</span> 登录用户名 --no-password <span class="token parameter variable">-v</span> <span class="token parameter variable">-cC</span> <span class="token parameter variable">-t</span> 架构.view_<span class="token string">"*"</span> <span class="token parameter variable">-t</span> 架构.casesearchproject <span class="token parameter variable">-d</span> 数据库名 <span class="token operator">></span> view_all-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h3><p>恢复某个架构包括数据</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_restore <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-d</span> 数据库名 <span class="token parameter variable">-O</span> <span class="token parameter variable">-x</span> <span class="token parameter variable">-v</span> xxx-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.dmp <span class="token parameter variable">--role</span><span class="token operator">=</span>角色名 <span class="token parameter variable">-n</span> 架构名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>恢复某个架构不包括数据</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_restore <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-d</span> 数据库名 <span class="token parameter variable">-O</span> <span class="token parameter variable">-x</span> <span class="token parameter variable">-v</span> xxx-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.dmp <span class="token parameter variable">-s</span> <span class="token parameter variable">--role</span><span class="token operator">=</span>角色名 <span class="token parameter variable">-n</span> 架构名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>恢复整个数据库包括数据</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_restore <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-d</span> 数据库名 <span class="token parameter variable">-O</span> <span class="token parameter variable">-x</span> <span class="token parameter variable">-v</span> xxx-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.dmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>恢复整个数据库不包括数据</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pg_restore <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-d</span> 数据库名 <span class="token parameter variable">-O</span> <span class="token parameter variable">-x</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-v</span> xxx-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.dmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>恢复某个架构的所有视图</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">psql <span class="token parameter variable">-p</span> 端口 <span class="token parameter variable">-d</span> 数据库名 <span class="token parameter variable">-v</span> <span class="token parameter variable">-f</span> view_all-<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%y%m%d"</span><span class="token variable">)</span></span>.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 
                 
             </div>
@@ -527,7 +549,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lqs-1.github.io/2023/01/19/bi-bao/">https://lqs-1.github.io/2023/01/19/bi-bao/</a>
+                    <a href="https://lqs-1.github.io/2023/03/02/postgresql-cao-zuo/">https://lqs-1.github.io/2023/03/02/postgresql-cao-zuo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -565,8 +587,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/basic/">
-                                    <span class="chip bg-color">basic</span>
+                                <a href="/tags/db/">
+                                    <span class="chip bg-color">db</span>
                                 </a>
                             
                         </div>
@@ -736,46 +758,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/01/19/die-dai-qi/">
+                <a href="/2023/03/02/postgresql-cao-zuo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="迭代器">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="PostgreSql操作">
                         
-                        <span class="card-title">迭代器</span>
+                        <span class="card-title">PostgreSql操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            python迭代器
+                            PostgreSql操作
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
+                            <a href="/categories/pgsql/" class="post-category">
+                                    pgsql
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/basic/">
-                        <span class="chip bg-color">basic</span>
+                    <a href="/tags/db/">
+                        <span class="chip bg-color">db</span>
                     </a>
                     
                 </div>
@@ -789,31 +813,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/16/wifi-mi-ma-po-jie/">
+                <a href="/2023/03/02/postgresql-an-zhuang-bu-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="wifi密码破解">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Postgresql安装部署">
                         
-                        <span class="card-title">wifi密码破解</span>
+                        <span class="card-title">Postgresql安装部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Wifi密码暴力破解，不一定成功
+                            postgresql单机安装部署
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/pgsql/" class="post-category">
+                                    pgsql
                                 </a>
                             
                             
@@ -823,8 +847,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/wifi/">
-                        <span class="chip bg-color">wifi</span>
+                    <a href="/tags/db/">
+                        <span class="chip bg-color">db</span>
                     </a>
                     
                 </div>
