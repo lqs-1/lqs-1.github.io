@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="mongoDB使用, java,linux,spring,cloud">
+    <meta name="keywords" content="Postgresql安装部署, java,linux,spring,cloud">
     <meta name="description" content="希望你可以记住我 | 记住我这样活过 | 这样在你身边呆过">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>mongoDB使用 | SGzuibang</title>
+    <title>Postgresql安装部署 | SGzuibang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,7 +266,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'd5e8139b6262895c208b9fd9e7a21ecba14eb00445638566fcb77bae14408691';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('微信搜索‘无忧小烛’，回复‘somg’获取文章同意阅读密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -279,12 +279,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">mongoDB使用</h1>
+                    <h1 class="description center-align post-title">Postgresql安装部署</h1>
                 </div>
             </div>
         </div>
@@ -400,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/mongo/">
-                                <span class="chip bg-color">mongo</span>
+                            <a href="/tags/db/">
+                                <span class="chip bg-color">db</span>
                             </a>
                         
                     </div>
@@ -412,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/db/" class="post-category">
-                                db
+                            <a href="/categories/pgsql/" class="post-category">
+                                pgsql
                             </a>
                         
                     </div>
@@ -425,28 +425,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-19
+                    2023-03-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-01
+                    2023-03-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    747
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    3 分
                 </div>
                 
 
@@ -469,217 +469,112 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Mongodb"><a href="#Mongodb" class="headerlink" title="Mongodb"></a>Mongodb</h1><blockquote>
-<ul>
-<li><p>全局说明:文档=字典=map=dict=json </p>
-</li>
-<li><p>$是mongodb的专用字符</p>
-</li>
-</ul>
+                <h2 id="PostgreSql"><a href="#PostgreSql" class="headerlink" title="PostgreSql"></a>PostgreSql</h2><h3 id="下载postgresql源码"><a href="#下载postgresql源码" class="headerlink" title="下载postgresql源码"></a>下载postgresql源码</h3><blockquote>
+<p>以Ubuntu为例</p>
 </blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> mongodb-org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="启动-服务器"><a href="#启动-服务器" class="headerlink" title="启动(服务器):"></a>启动(服务器):</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">service</span> mongod start
-<span class="token function">sudo</span> <span class="token function">service</span> mongod stop
-<span class="token function">sudo</span> <span class="token function">service</span> mongod restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mongo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>下载PostgreSql源码包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://ftp.postgresql.org/pub/source/v13.0/postgresql-13.0.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解压源码包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> postgresql-13.0.tar.gz <span class="token parameter variable">-C</span> /home/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="安装前准备工作"><a href="#安装前准备工作" class="headerlink" title="安装前准备工作"></a>安装前准备工作</h3><p>安装编译工具及相关依赖</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> gcc bison gcc-c++ readline readline-devel zlib zlib-devel perl perl-devel systemd-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>创建用户</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">adduser postgres<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>创建postgresql相关目录和文件夹所属关系</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /home/postgres/data
+<span class="token function">mkdir</span> /home/postgres/init
+<span class="token function">chown</span> <span class="token parameter variable">-R</span> postgres:postgres /home/postgres<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="编译安装PostgreSql"><a href="#编译安装PostgreSql" class="headerlink" title="编译安装PostgreSql"></a>编译安装PostgreSql</h3><p>进入源码目录</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/postgresql-13.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>configure执行配置准备构建环境</p>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;configure --with-pgport&#x3D;5432 \
+  --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;pgsql \
+  --with-systemd \
+  --with-blocksize&#x3D;8 \
+  --with-segsize&#x3D;1 \
+  --with-wal-blocksize&#x3D;8 \
+  --without-readline \
+  --datadir&#x3D;&#x2F;home&#x2F;postgres&#x2F;init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>configure参数说明</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">--with-pgport 指定端口
+<span class="token parameter variable">--prefix</span>  安装目录
+--with-systemd 编译对systemd 服务通知的支持。如果服务器是在systemd机制下被启动，这可以提高集成度，否则不会有影响 。要使用这个选项，必须安装libsystemd 以及相关的头文件
+--with-blocksize 设置块大小，单位K。2的N次幂，1-32K之间
+--with-segsize 超大数据表文件，会切分成若干个大小不超过SEGSIZE的小文件。该值的设置参考系统大文件的最大值。单位G。2的N次幂
+--with-wal-blocksize 指定WAL日志文件的大小,单位M。2的N次幂。设置区间 <span class="token number">1</span> - 1024M
+--without-readline 避免使用Readline库（以及libedit）。这个选项禁用了psql中的命令行编辑和历史， 因此我们不建议这么做
+--without-zlib	避免使用Zlib库。这样就禁用了pg_dump和 pg_restore中对压缩归档的支持。这个选项只适用于那些没有这个库的少见的系统<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>编译安装</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token operator">&amp;&amp;</span> <span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>执行下面的命令对数据库进行初始化，数据库的初始化需要切换到<code>postgres</code>用户</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">su</span> postgres
+/usr/local/pgsql/bin/initdb <span class="token parameter variable">-D</span> /home/postgres/data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>创建systemd配置文件<code>/etc/systemd/system/pgserver.service</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>Unit<span class="token punctuation">]</span>
+<span class="token assign-left variable">Description</span><span class="token operator">=</span>PostgreSQL database server
+<span class="token assign-left variable">Documentation</span><span class="token operator">=</span>man:postgres<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+<span class="token assign-left variable">Type</span><span class="token operator">=</span>notify
+<span class="token assign-left variable">User</span><span class="token operator">=</span>postgres
+<span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>/usr/local/pgsql/bin/postgres <span class="token parameter variable">-D</span> /home/postgres/data
+<span class="token assign-left variable">ExecReload</span><span class="token operator">=</span>/bin/kill <span class="token parameter variable">-HUP</span> <span class="token variable">$MAINPID</span>
+<span class="token assign-left variable">KillMode</span><span class="token operator">=</span>mixed
+<span class="token assign-left variable">KillSignal</span><span class="token operator">=</span>SIGINT
+<span class="token assign-left variable">TimeoutSec</span><span class="token operator">=</span><span class="token number">0</span>
+
+<span class="token punctuation">[</span>Install<span class="token punctuation">]</span>
+<span class="token assign-left variable">WantedBy</span><span class="token operator">=</span>multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>配置开机启动并启动PostgreSQL</p>
+<pre class="line-numbers language-none"><code class="language-none">systemctl enable pgserver --now<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>编辑<code>~/.bashrc</code>添加下面数据</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">alias</span> <span class="token assign-left variable">psql</span><span class="token operator">=</span><span class="token string">"/usr/local/pgsql/bin/psql"</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">pg_dump</span><span class="token operator">=</span><span class="token string">"/usr/local/pgsql/bin/pg_dump"</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">pg_restore</span><span class="token operator">=</span><span class="token string">"/usr/local/pgsql/bin/pg_resotre"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使用默认<code>postgres</code>用户登录</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">psql <span class="token parameter variable">-p</span> <span class="token number">5432</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>修改数据库用户<code>postgres</code>密码</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">\</span>password<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="连接配置"><a href="#连接配置" class="headerlink" title="连接配置"></a>连接配置</h3><p>修改<code>/home/postgres/data/postgresql.conf</code>配置文件，设置监听地址</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">listen_addresses  <span class="token operator">=</span> <span class="token string">"*"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>修改<code>/home/postgres/data/pg_hba.conf(host-based authentication file)</code>配置连接方式</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># TYPE  DATABASE        USER            ADDRESS                 METHOD</span>
+<span class="token comment"># "local" is for Unix domain socket connections only</span>
+<span class="token builtin class-name">local</span>   all             all                                     trust
+<span class="token comment"># IPv4 local connections:</span>
+<span class="token function">host</span>    all             all             <span class="token number">127.0</span>.0.1/32            trust
+<span class="token comment"># IPv6 local connections:</span>
+<span class="token function">host</span>    all             all             ::1/128                 trust
+<span class="token comment"># Allow replication connections from localhost, by a user with the</span>
+<span class="token comment"># replication privilege.</span>
+<span class="token builtin class-name">local</span>   replication     all                                     trust
+<span class="token function">host</span>    replication     all             <span class="token number">127.0</span>.0.1/32            trust
+<span class="token function">host</span>    replication     all             ::1/128                 trust
 
 
+<span class="token function">host</span>    all             all             <span class="token number">192.168</span>.100.0/24           md5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="服务环境"><a href="#服务环境" class="headerlink" title="服务环境:"></a>服务环境:</h2><pre class="line-numbers language-text" data-language="text"><code class="language-text">mongod://localhost:27017
-redis://localhost:6379
-mysql://localhost:3306
-nginx://localhost:8888
-tomcat://localhost:8080
-flask://localhost:5000
-django://localhost:8000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改配置后重启数据库服务即可</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart pgserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-<h2 id="mongodb的命令"><a href="#mongodb的命令" class="headerlink" title="mongodb的命令"></a>mongodb的命令</h2><pre class="line-numbers language-text" data-language="text"><code class="language-text">show dbs: 查看有哪些数据库
-show database: 查看有哪些数据库
-use 数据库: 切换到某个数据库,如果没有,直接创建(如果被使用的数据库是没有的,那么也是可以用的,因为mongodb是会自动创建的,但是,如果在创建完成之后没有存入任何数据,那么这个表用完之后,也不会保存)
-db: 查看当前数据库(代表当前数据库)
-db.dropDatabase(): 删除当前使用的数据库
-
-mongodb没有表的概念 数据都存储在集合当中
-
-集合也是不需要自己创建的,可以在存入数据的时候,mongodb自动创建集合
-
-也可以手动创建集合
-db.createCollection(name, options): name 是被创建的这个集合的名字,options是这个集合的一些属性约束,用一个字典来设置
-db.createCollection("userinfo",&#123;capped:true, size:10&#125;):表示的就是,创建一个叫做userinfo的集合,capped表示限制,默认false,无上限,size是在capped为true的时候设置,表示数据超过10字节的时候,就会被新的数据覆盖,把之前的数据往外挤
-
-show cllections: 查看所有的集合
-db.集合名.drop(): 删除给定的集合
-db.集合名: 使用指定的集合
-db.集合名.find(): 查询指定的集合中的数据
-db.集合名.insert(&#123;"name": "lqs","age":"12"&#125;): 往指定的集合插入数据
-
-这是一个Object类型(文档类型,字典),那么他会自动生成一个_id:ObjectId("xxxxxxx"),保证文档的唯一性<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><pre class="line-numbers language-text" data-language="text"><code class="language-text">db.集合名.insert(&#123;&#125;)
-db.集合名.save(&#123;&#125;)
-两者的区别:
-    insert()的方式来添加数据的时候,是绝对添加,如果添加一个_id已经存在的数据,那么它会直接报错,说,如果添加一个_id已经存在
-    save()的方式来添加数据的时候,是相对添加,如果添加一个_id不存在的数据,就和insert()方法一样,如果添加一个_id已经存在的数据,那么就是替换这个数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="文档插入"><a href="#文档插入" class="headerlink" title="文档插入"></a>文档插入</h3><pre class="line-numbers language-text" data-language="text"><code class="language-text">db.集合名.insert(&#123;_id:value,key:"value",key:"value",...&#125;): key是可以不用引起来,也可以引起,value根据具体数数据类型,字符串就引起,数字就不引起,_id如果自己不设置,系统就会自动生成<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><pre class="line-numbers language-text" data-language="text"><code class="language-text">美化查询:db.集合名.find().pretty():
-
-db.集合名.find(): 查给定集合的所有数据
-
-db.集合名.find(条件 根据这个条件查出对应的数据 字典格式, 返回的字段): 查询出给定集合里满足条件的所有数据
-db.集合名.findOne(条件 根据这个条件查出对应的数据 字典格式): 查询出给定集合里满足条件的一条数据
-
-比较运算符
-    $lt: 小于
-    $lte: 小于等于
-    $gt: 大于
-    $gte: 大于等于
-    $ne: 不等
-使用例子:
-    db.collection.find(&#123;age:&#123;$lt:18&#125;&#125;):查询出collection集合中的年龄小于18的所有数据
-
-
-范围运算符:
-    $in: 范围是指定的范围给在数组中
-    $nin: 不在指定的范围的
-使用例子:
-    db.collection.find(&#123;age:&#123;$in:[12,45,23]&#125;&#125;):查询出collection集合中的年龄是12,23,45的人
-
-
-逻辑运算符:
-    与: 没有直接的运算符,直接写
-
-    $or       逻辑或
-    $and      逻辑与
-    $not      逻辑非
-    $nor      逻辑or的取反
-    $exists   存在逻辑
-    $type     查询键的数据类型
-使用例子:
-    db.collection.find(&#123;$or:[&#123;age:&#123;$lt:18&#125;&#125;,&#123;name:"sc"&#125;]&#125;):查询出collection中的年龄小于18或者名字等于sc的
-
-
-正则:
-    用/正则表达式/或者$regex:"正则表达式"编写正则表达式
-使用例子:
-    db.collection.find(&#123;name:/^abc/&#125;):查询名字是abc开头的
-    db.collection.find(&#123;name:&#123;$regex:"123$"&#125;&#125;):查询名字是123结尾的
-
-
-limit和skip:
-    limit: 选中多少个
-    skip: 跳过多少个
-    配合使用的时候,先skip再limit
-使用例子:
-    db.collection.find().skip(2).limit(2):跳过两个再选中两个
-
-
-自定义查询(写js):
-    db.collection.find(&#123;$where:function()&#123;return this.age>30&#125;&#125;)
-    where可以执行一个函数,this就是表示当前collection中的数据,一条一条的来过this,类似于遍历<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<h4 id="查询之后返回字段的过滤"><a href="#查询之后返回字段的过滤" class="headerlink" title="查询之后返回字段的过滤"></a>查询之后返回字段的过滤</h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">db.collection.find(&#123;条件&#125;,&#123;name:1,_id:0 参数就是返回的字段,1为返回,不写不返回,除了_id,如果不想返回_id,那么_id:0&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><pre class="line-numbers language-none"><code class="language-none">db.collection.find().sort(&#123;排序字段:1, 排序字段:-1&#125;): sort表示排序,1为升序,-1为降序<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="统计个数"><a href="#统计个数" class="headerlink" title="统计个数"></a>统计个数</h4><pre class="line-numbers language-none"><code class="language-none">db.collection.find(&#123;条件&#125;).count()
-db.collection.count(&#123;条件&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h4><pre class="line-numbers language-none"><code class="language-none">db.collection.distinct(&quot;字段名字&quot;,&#123;条件&#125;): 返回的是一个列表,列表里面是不重复的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h4><pre class="line-numbers language-none"><code class="language-none">管道:上层的结果给下层用
-$sum:总和,统计个数,$sum:1,以一倍计数
-$avg:平均
-$min:最小值
-$max:最大值
-$push:结果文档插入到一个数组中，
-$addToSet:结果文档插入到一个数组中,但不创建副本
-$first:根据资源文档排序获取第一个文档数据,
-$last:根据资源文档排序获取最后一个文档数据,
-$limit:显示多少个
-$skip:跳过多少个
-$sort:排序
-$project:修改输入文档的结构,如重命名\添加\删除字段,创建计算结果
-$unwind:将数组类型的字段进行拆分
-
-$match:相当于mysql中where
-$group:相当于mysql中group by
-
-db.collection.aggregate(pipeline, options):语法:pipeline,管道,必须是一个数组
-格式:db.collection.aggregate([&#123;管道:&#123;表达式&#125;&#125;,&#123;管道:&#123;表达式&#125;&#125;])
-
-管道中使用字段:
-    不加$:在明确的条件中字段不用加$如&#123;name:&quot;lqs&quot;&#125;:这种表示name是lqs,冒号前面不加
-    加$:在不明确的使用值的时候加$如&#123;name2:$name&#125;:这种表示获取name的值,冒号后面加
-
-例子:
-    db.collection.aggregate([&#123;$match:&#123;name:&quot;lqs&quot;&#125;&#125;]):查出名字是lqs的
-    db.collection.aggregate([&#123;$match:&#123;_id:&#123;&quot;$gt&quot;:2&#125;&#125;&#125;,&#123;$group:&#123;_id:$name,aavg:&#123;$avg:$salary&#125;&#125;&#125;]):查出_id大于2的所有数据,在上面查出的数据中,再按照name分组,求出salary的平均,_id表示分组字段的key,分组字段必须加上$,在这里面出现的变量多用$修饰,aavg是别名这种有多个操作的,都是衔接的,必须下面能用
-    db.collection.aggregate([&#123;$group:&#123;_id:$name,maxM:&#123;$max:$salary&#125;,minM:&#123;$min:$salary&#125;&#125;&#125;]):分组查出最大最小
-    db.collection.aggregate([&#123;$group:&#123;_id:$sex,count:&#123;$sum:1&#125;&#125;&#125;]):分组统计男女生的总个数
-    db.collection.aggregate([&#123;$group:&#123;_id:null,count:&#123;$sum:1&#125;&#125;&#125;]):表示查出这个文档的个数,_id&#x3D;null的时候,表示整个文档为一组
-    上面的各种结果中都一定有一个_id字段,id表示分组依据
-    db.collection.aggregate([&#123;$group:&#123;_id:$gender,count:&#123;$sum:1&#125;&#125;&#125;,&#123;$[project:&#123;gender:$_id,count:1,_id:0&#125;]&#125;]):表示创建一个gender字段,值为上一个管道的_id的值,count:1表示显示这个字段,_id:0,表示不显示这个字段,也可以使用count:$count来显示,个之前的投影一样的1\0操作
-
-    db.collection.aggregate([&#123;$sort:&#123;name:1&#125;&#125;]):按照姓名升序排序
-    db.collection.aggregate([
-        &#123;$group:&#123;_id:$gender,count:&#123;$sum:1&#125;&#125;&#125;,
-        &#123;$project:&#123;_id:0,gender:$_id.gender,count:1&#125;&#125;,
-        &#123;$sort:&#123;count:1&#125;&#125;
-    ]) 按照男女生总数升序排列
-    db.cllection.aggregate([
-        &#123;$skip:2&#125;,
-        &#123;$limit:2&#125;
-    ]) 跳过两条显示两条
-
-    原数据:&#123;&quot;_id&quot;:1, &quot;name&quot;:&quot;map&quot;, &quot;size&quot;:[1,2,3]&#125;
-    db.collection.aggregate([&#123;$unwind:$size&#125;]):将上面的数据中的size对应的列表拆分成三个,这个管道只对列表有用
-    拆分后:
-        &#123;&quot;_id&quot;:1, &quot;name&quot;:&quot;map&quot;, &quot;size&quot;:1&#125;
-        &#123;&quot;_id&quot;:1, &quot;name&quot;:&quot;map&quot;, &quot;size&quot;:2&#125;
-        &#123;&quot;_id&quot;:1, &quot;name&quot;:&quot;map&quot;, &quot;size&quot;:3&#125;
-
-
-    高级使用:
-    db.collection.aggregate([
-        &#123;$group:&#123;_id:&#123;conutry:$conutry,prevent:$prevent,userid:$userid&#125;&#125;&#125;, 将不同国家的不同省份的用户分出来userid用于去重
-        &#123;$group:&#123;_id:&#123;conutry:$_id.conutry,prevent:$_id.prevent&#125;,conunt:&#123;$sum:1&#125;&#125;&#125;, 在将以上分好的用国家和省份分组统计出总个数
-        &#123;$project:&#123;_id:0,conutry:$_id.conutry,prevent:$_id.prevent,conunt:1&#125;&#125; 显示某个国家某个地区的总人数
-    ])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><pre class="line-numbers language-none"><code class="language-none">db.集合名.update(&#123;条件 根据这个条件查出对应的数据 字典格式&#125;,&#123;把查到的数据更新成什么 字典格式&#125;,&#123;multi Boolean 如果是true那么就是把查到的所有符合的数据都更新,false的话就只是更新查到的一个符合条件的数据&#125;)
-    这种方式不是简单的更新,这种属于是替换
-db.集合名.update(&#123;条件 根据这个条件查出对应的数据 字典格式&#125;,&#123;$set:把查到的数据更新成什么 字典格式&#125;,&#123;multi Boolean 如果是true那么就是把查到的所有符合的数据都更新,false的话就只是更新查到的一个符合条件的数据&#125;)
-    这种方式就是更新,不会把本不该更新的键值对也替换了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><pre class="line-numbers language-none"><code class="language-none">db.集合名.remove(&#123;条件 根据这个条件查出对应的数据 字典格式&#125;,&#123;justOne:true&#125;)
-
-    justOne表示是否只删除一条,如果是false,那么删除满足条件的所有数据,默认false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><pre class="line-numbers language-none"><code class="language-none">Object ID: 文档ID
-String: 字符串,最常用,必须是utf-8
-Boolean: 存储一个布尔,true或者false
-Integer: 整数,可以是32位\64位
-Double: 浮点数
-Arrays: 数组或者列表,多个值存入一个键
-Object: 用于嵌入式的文档,即一个值为一个文档
-Null: 存储Null值
-Timestamp: 时间戳,表示从1970-1-1到现在的总秒数
-Data: 存储当前日期或者时间的UNIX时间格式,在mongodb中可以通过new Date(日期)来使用,存入的是年月日
-
-
-说明:
-    文档:要存入数据库中的字典,可以是各种嵌套的字典
-
-    每一个文档都有一个固定的属性 _id 会自动生成(12字节的十六进制数),多数时间自己设置_id,为了保证唯一性<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><pre class="line-numbers language-none"><code class="language-none">创建索引:
-    db.collection.ensureIndex(&#123;&quot;索引字段&quot;,排序方式1升序-1降序&#125;,&#123;&quot;索引字段&quot;,&quot;取得名字&quot;&#125;):索引的创建\取名
-查询索引:
-    db.collection.getIndexes():查询所有的索引
-删除索引：
-    db.collection.dorpIndex(&quot;索引名&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -705,7 +600,7 @@ Data: 存储当前日期或者时间的UNIX时间格式,在mongodb中可以通�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lqs-1.github.io/2023/01/19/mongodb-shi-yong/">https://lqs-1.github.io/2023/01/19/mongodb-shi-yong/</a>
+                    <a href="https://lqs-1.github.io/2023/03/02/postgresql-an-zhuang-bu-shu/">https://lqs-1.github.io/2023/03/02/postgresql-an-zhuang-bu-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -743,8 +638,8 @@ Data: 存储当前日期或者时间的UNIX时间格式,在mongodb中可以通�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/mongo/">
-                                    <span class="chip bg-color">mongo</span>
+                                <a href="/tags/db/">
+                                    <span class="chip bg-color">db</span>
                                 </a>
                             
                         </div>
@@ -914,46 +809,48 @@ Data: 存储当前日期或者时间的UNIX时间格式,在mongodb中可以通�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/01/26/mysql-dao-ru-dao-chu/">
+                <a href="/2023/03/02/postgresql-an-zhuang-bu-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="mysql导入导出">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Postgresql安装部署">
                         
-                        <span class="card-title">mysql导入导出</span>
+                        <span class="card-title">Postgresql安装部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            mysql数据导入导出
+                            postgresql单机安装部署
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/db/" class="post-category">
-                                    db
+                            <a href="/categories/pgsql/" class="post-category">
+                                    pgsql
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mysql/">
-                        <span class="chip bg-color">mysql</span>
+                    <a href="/tags/db/">
+                        <span class="chip bg-color">db</span>
                     </a>
                     
                 </div>
@@ -967,31 +864,31 @@ Data: 存储当前日期或者时间的UNIX时间格式,在mongodb中可以通�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/19/nginx-da-jian/">
+                <a href="/2023/02/22/pg/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="nginx搭建">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="pg">
                         
-                        <span class="card-title">nginx搭建</span>
+                        <span class="card-title">pg</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            nginx搭建
+                            视图、表的备份和恢复
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/sql/" class="post-category">
+                                    sql
                                 </a>
                             
                             
@@ -1001,8 +898,8 @@ Data: 存储当前日期或者时间的UNIX时间格式,在mongodb中可以通�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nginx/">
-                        <span class="chip bg-color">nginx</span>
+                    <a href="/tags/postgresql/">
+                        <span class="chip bg-color">postgresql</span>
                     </a>
                     
                 </div>
