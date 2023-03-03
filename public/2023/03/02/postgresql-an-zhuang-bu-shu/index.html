@@ -432,14 +432,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-02
+                    2023-03-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    747
+                    777
                 </div>
                 
 
@@ -479,10 +479,18 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> postgresql-13.0.tar.gz <span class="token parameter variable">-C</span> /home/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="安装前准备工作"><a href="#安装前准备工作" class="headerlink" title="安装前准备工作"></a>安装前准备工作</h3><p>安装编译工具及相关依赖</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> gcc bison gcc-c++ readline readline-devel zlib zlib-devel perl perl-devel systemd-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> zlib1g-dev libreadline-dev
+<span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> binutils
+<span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> gcc
+<span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> g++
+<span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> sysstat
+<span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> unixodbc unixodbc-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>创建用户</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">adduser postgres<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>postgres用户提权`/etc/sudoers</p>
+<pre class="line-numbers language-none"><code class="language-none">postgres ALL&#x3D;(ALL:ALL) ALL<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>创建postgresql相关目录和文件夹所属关系</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /home/postgres/data

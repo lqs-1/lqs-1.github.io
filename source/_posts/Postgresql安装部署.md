@@ -31,12 +31,22 @@ tar -zxvf postgresql-13.0.tar.gz -C /home/
 
 安装编译工具及相关依赖
 ```shell
-apt install -y gcc bison gcc-c++ readline readline-devel zlib zlib-devel perl perl-devel systemd-devel
+ apt-get -y install zlib1g-dev libreadline-dev
+ apt-get -y install binutils
+ apt-get -y install gcc
+ apt-get -y install g++
+ apt-get -y install sysstat
+ apt-get -y install unixodbc unixodbc-dev
 ```
 
 创建用户
 ```shell
 adduser postgres
+```
+
+postgres用户提权`/etc/sudoers
+```
+postgres ALL=(ALL:ALL) ALL
 ```
 
 创建postgresql相关目录和文件夹所属关系
