@@ -44,7 +44,7 @@ tar -zxvf postgresql-13.0.tar.gz -C /home/
 adduser postgres
 ```
 
-postgres用户提权`/etc/sudoers
+postgres用户提权`/etc/sudoers`
 ```
 postgres ALL=(ALL:ALL) ALL
 ```
