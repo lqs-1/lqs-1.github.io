@@ -149,23 +149,9 @@ psql -p 5432
 listen_addresses  = "*"
 ```
 
-修改`/home/postgres/data/pg_hba.conf(host-based authentication file)`配置连接方式
+修改`/home/postgres/data/pg_hba.conf(host-based authentication file)`配置连接方式（添加）
 ```shell
-# TYPE  DATABASE        USER            ADDRESS                 METHOD
-# "local" is for Unix domain socket connections only
-local   all             all                                     trust
-# IPv4 local connections:
-host    all             all             127.0.0.1/32            trust
-# IPv6 local connections:
-host    all             all             ::1/128                 trust
-# Allow replication connections from localhost, by a user with the
-# replication privilege.
-local   replication     all                                     trust
-host    replication     all             127.0.0.1/32            trust
-host    replication     all             ::1/128                 trust
-
-
-host    all             all             192.168.100.0/24           md5
+host    all    all    0.0.0.0/0    trust
 ```
 
 修改配置后重启数据库服务即可

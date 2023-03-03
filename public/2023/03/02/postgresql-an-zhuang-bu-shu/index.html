@@ -439,7 +439,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    777
+                    710
                 </div>
                 
 
@@ -563,22 +563,8 @@
 <h3 id="连接配置"><a href="#连接配置" class="headerlink" title="连接配置"></a>连接配置</h3><p>修改<code>/home/postgres/data/postgresql.conf</code>配置文件，设置监听地址</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">listen_addresses  <span class="token operator">=</span> <span class="token string">"*"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>修改<code>/home/postgres/data/pg_hba.conf(host-based authentication file)</code>配置连接方式</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># TYPE  DATABASE        USER            ADDRESS                 METHOD</span>
-<span class="token comment"># "local" is for Unix domain socket connections only</span>
-<span class="token builtin class-name">local</span>   all             all                                     trust
-<span class="token comment"># IPv4 local connections:</span>
-<span class="token function">host</span>    all             all             <span class="token number">127.0</span>.0.1/32            trust
-<span class="token comment"># IPv6 local connections:</span>
-<span class="token function">host</span>    all             all             ::1/128                 trust
-<span class="token comment"># Allow replication connections from localhost, by a user with the</span>
-<span class="token comment"># replication privilege.</span>
-<span class="token builtin class-name">local</span>   replication     all                                     trust
-<span class="token function">host</span>    replication     all             <span class="token number">127.0</span>.0.1/32            trust
-<span class="token function">host</span>    replication     all             ::1/128                 trust
-
-
-<span class="token function">host</span>    all             all             <span class="token number">192.168</span>.100.0/24           md5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改<code>/home/postgres/data/pg_hba.conf(host-based authentication file)</code>配置连接方式（添加）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">host</span>    all    all    <span class="token number">0.0</span>.0.0/0    trust<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>修改配置后重启数据库服务即可</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart pgserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1145,7 +1131,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">34.9k</span>&nbsp;字
+                class="white-color">34.8k</span>&nbsp;字
             
             
             
