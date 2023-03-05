@@ -432,14 +432,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-03
+                    2023-03-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    710
+                    720
                 </div>
                 
 
@@ -479,7 +479,7 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> postgresql-13.0.tar.gz <span class="token parameter variable">-C</span> /home/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="安装前准备工作"><a href="#安装前准备工作" class="headerlink" title="安装前准备工作"></a>安装前准备工作</h3><p>安装编译工具及相关依赖</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> zlib1g-dev libreadline-dev
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> zlib1g-dev libreadline-dev <span class="token comment"># 安装依赖</span>
 <span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> binutils
 <span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> gcc
 <span class="token function">apt-get</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> g++
@@ -553,6 +553,9 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">alias</span> <span class="token assign-left variable">psql</span><span class="token operator">=</span><span class="token string">"/usr/local/pgsql/bin/psql"</span>
 <span class="token builtin class-name">alias</span> <span class="token assign-left variable">pg_dump</span><span class="token operator">=</span><span class="token string">"/usr/local/pgsql/bin/pg_dump"</span>
 <span class="token builtin class-name">alias</span> <span class="token assign-left variable">pg_restore</span><span class="token operator">=</span><span class="token string">"/usr/local/pgsql/bin/pg_resotre"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使其生效</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>使用默认<code>postgres</code>用户登录</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">psql <span class="token parameter variable">-p</span> <span class="token number">5432</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>

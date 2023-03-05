@@ -31,7 +31,7 @@ tar -zxvf postgresql-13.0.tar.gz -C /home/
 
 安装编译工具及相关依赖
 ```shell
- apt-get -y install zlib1g-dev libreadline-dev
+ apt-get -y install zlib1g-dev libreadline-dev # 安装依赖
  apt-get -y install binutils
  apt-get -y install gcc
  apt-get -y install g++
@@ -130,6 +130,11 @@ systemctl enable pgserver --now
 alias psql="/usr/local/pgsql/bin/psql"
 alias pg_dump="/usr/local/pgsql/bin/pg_dump"
 alias pg_restore="/usr/local/pgsql/bin/pg_resotre"
+```
+
+使其生效
+```shell
+source ~/.bashrc
 ```
 
 使用默认`postgres`用户登录
