@@ -52,11 +52,9 @@ service sshd status
 sudo passwd root
 ```
 
-```
-vim /etc/ssh/sshd_config
-```
 
-	PermitRootLogin yes
-
+`vim /etc/ssh/sshd_config`
+```
+PermitRootLogin yes
 ```
 
