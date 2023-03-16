@@ -439,7 +439,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    987
                 </div>
                 
 
@@ -594,33 +594,8 @@ http://local-168-182-111/home/minio/data/data4 <span class="token operator">></s
 <p>下面脚本复制时 \ 后不要有空格，还有就是上面的目录是对应的一块磁盘，而非简单的在/home/minio/data目录下创建四个目录，要不然会报如下错误，看提示以为是root权限问题<code>part of root disk, will not be used (*errors.errorString)</code></p>
 </blockquote>
 <h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 在每台机器上都执行该文件，即以分布式的方式启动了MINIO</span>
-<span class="token function">sh</span> /home/minio/run/run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h4 id="添加或修改minio-service，通过systemctl启停服务（推荐）"><a href="#添加或修改minio-service，通过systemctl启停服务（推荐）" class="headerlink" title="添加或修改minio.service，通过systemctl启停服务（推荐）"></a>添加或修改minio.service，通过systemctl启停服务（推荐）</h4><blockquote>
-<p><code>vim /etc/systemd/system/minio.service</code></p>
-</blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>Unit<span class="token punctuation">]</span>
-<span class="token assign-left variable">Description</span><span class="token operator">=</span>Minio <span class="token function">service</span>
-<span class="token assign-left variable">Documentation</span><span class="token operator">=</span>https://docs.minio.io/
-
-<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
-<span class="token assign-left variable">WorkingDirectory</span><span class="token operator">=</span>/home/minio
-<span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>/home/minio/run/run.sh
-
-<span class="token assign-left variable">Restart</span><span class="token operator">=</span>on-failure
-<span class="token assign-left variable">RestartSec</span><span class="token operator">=</span><span class="token number">5</span>
-
-<span class="token punctuation">[</span>Install<span class="token punctuation">]</span>
-<span class="token assign-left variable">WantedBy</span><span class="token operator">=</span>multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x /etc/systemd/system/minio.service <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x /home/minio/appt/minio <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x /home/minio/run/run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="启动集群（每台）"><a href="#启动集群（每台）" class="headerlink" title="启动集群（每台）"></a>启动集群（每台）</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> <span class="token comment">#重新加载服务</span>
-systemctl daemon-reload
-<span class="token comment">#启动服务</span>
-systemctl start minio
-<span class="token comment">#加入自启动</span>
-systemctl <span class="token builtin class-name">enable</span> minio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+chomod +x /home/minio/run/run.sh
+<span class="token function">sh</span> /home/minio/run/run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1185,7 +1160,7 @@ systemctl <span class="token builtin class-name">enable</span> minio<span aria-h
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.9k</span>&nbsp;字
+                class="white-color">37.8k</span>&nbsp;字
             
             
             

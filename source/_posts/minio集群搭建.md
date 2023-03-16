@@ -145,40 +145,6 @@ http://local-168-182-111/home/minio/data/data4 > /home/minio/logs/minio_server.l
 ### 启动服务
 ```shell
 # 在每台机器上都执行该文件，即以分布式的方式启动了MINIO
+chomod +x /home/minio/run/run.sh
 sh /home/minio/run/run.sh
-```
-
-#### 添加或修改minio.service，通过systemctl启停服务（推荐）
-
-> `vim /etc/systemd/system/minio.service`
-
-```shell
-[Unit]
-Description=Minio service
-Documentation=https://docs.minio.io/
-
-[Service]
-WorkingDirectory=/home/minio
-ExecStart=/home/minio/run/run.sh
-
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-```
-
-#### 修改文件权限
-```shell
-chmod +x /etc/systemd/system/minio.service && chmod +x /home/minio/appt/minio && chmod +x /home/minio/run/run.sh
-```
-
-#### 启动集群（每台）
-```shell
- #重新加载服务
-systemctl daemon-reload
-#启动服务
-systemctl start minio
-#加入自启动
-systemctl enable minio
 ```
