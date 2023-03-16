@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MinIO的搭建与SpringBoot的整合, java,linux,spring,cloud">
+    <meta name="keywords" content="minio集群搭建, java,linux,spring,cloud">
     <meta name="description" content="希望你可以记住我 | 记住我这样活过 | 这样在你身边呆过">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>MinIO的搭建与SpringBoot的整合 | SGzuibang</title>
+    <title>minio集群搭建 | SGzuibang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,7 +266,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = '5c4aaf271c7c13b2372e84982f82f2cd279026950438dfc769c95dcabdfd2a87';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('微信搜索‘无忧小烛’，回复‘somg’获取文章同意阅读密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -279,12 +279,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MinIO的搭建与SpringBoot的整合</h1>
+                    <h1 class="description center-align post-title">minio集群搭建</h1>
                 </div>
             </div>
         </div>
@@ -400,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/storage/">
-                                <span class="chip bg-color">storage</span>
+                            <a href="/tags/minio/">
+                                <span class="chip bg-color">minio</span>
                             </a>
                         
                     </div>
@@ -412,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/minio/" class="post-category">
-                                minio
+                            <a href="/categories/storage/" class="post-category">
+                                storage
                             </a>
                         
                     </div>
@@ -425,28 +425,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-09
+                    2023-03-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-09
+                    2023-03-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    4 分
                 </div>
                 
 
@@ -469,324 +469,158 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MinIO的搭建（单机部署）"><a href="#MinIO的搭建（单机部署）" class="headerlink" title="MinIO的搭建（单机部署）"></a>MinIO的搭建（单机部署）</h1><h2 id="二进制方式："><a href="#二进制方式：" class="headerlink" title="二进制方式："></a>二进制方式：</h2><pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;mnt&#x2F;data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>MinIO 是在 GNU Affero 通用公共许可证 v3.0 下发布的高性能对象存储。它与 Amazon S3 云存储服务 API 兼容。使用 MinIO 为机器学习、分析和应用程序数据工作负载构建高性能基础架构</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://min.io/"><code>官网</code></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/minio/minio"><code>github</code></a></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote>
+<ul>
+<li><code>S3</code>: Simple Storage Service，简单存储服务，这个概念是Amazon在2006年推出的，对象存储就是从那个时候诞生的。S3提供了一个简单Web服务接口，可用于随时在Web上的任何位置存储和检索任何数量的数据 </li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>Object</code>: 存储到 Minio 的基本对象，如文件、字节流，Anything</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>Bucket</code>: 用来存储 Object 的逻辑空间。每个 Bucket 之间的数据是相互隔离的</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>Drive</code>: 部署 Minio 时设置的磁盘，Minio 中所有的对象数据都会存储在 Drive 里</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>Set</code>: 一组 Drive 的集合，分布式部署根据集群规模自动划分一个或多个 Set ，每个 Set 中的 Drive 分布在不同位置</li>
+</ul>
+</blockquote>
+<h2 id="纠删码（Erasure-Code）"><a href="#纠删码（Erasure-Code）" class="headerlink" title="纠删码（Erasure Code）"></a>纠删码（Erasure Code）</h2><blockquote>
+<p>纠删码（Erasure Code）简称EC，是一种数据保护方法，它将数据分割成片段，把冗余数据块扩展、编码，并将其存储在不同的位置，比如磁盘、存储节点或者其它地理位置</p>
+</blockquote>
+<h1 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h1><blockquote>
+<p>两台主机，每台主机4个磁盘</p>
+</blockquote>
+<h2 id="每台机子创建相关目录"><a href="#每台机子创建相关目录" class="headerlink" title="每台机子创建相关目录"></a>每台机子创建相关目录</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /home/minio/<span class="token punctuation">&#123;</span>app,run,logs,config,data<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>data</code>:磁盘目录都放这里<br><code>app</code>:minio可执行文件<br><code>run</code>:启动脚本<br><code>logs</code>:日志目录<br><code>config</code>:配置目录</p>
+<h2 id="下载minio"><a href="#下载minio" class="headerlink" title="下载minio"></a>下载minio</h2><blockquote>
+<p><code>cd /home/minio/app</code></p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://dl.min.io/server/minio/release/linux-amd64/minio
+<span class="token function">chmod</span> +x minio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">sudo chmod -R 775 &#x2F;mnt&#x2F;data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="每台机子创建四个目录（用于分区挂载）"><a href="#每台机子创建四个目录（用于分区挂载）" class="headerlink" title="每台机子创建四个目录（用于分区挂载）"></a>每台机子创建四个目录（用于分区挂载）</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /home/minio/data/<span class="token punctuation">&#123;</span>data1,data2,data3,data4<span class="token punctuation">&#125;</span> <span class="token parameter variable">-pv</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">wget -P &#x2F;mnt&#x2F;data&#x2F; https:&#x2F;&#x2F;dl.min.io&#x2F;server&#x2F;minio&#x2F;release&#x2F;linux-amd64&#x2F;minio<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="分区挂载-每台机子"><a href="#分区挂载-每台机子" class="headerlink" title="分区挂载(每台机子)"></a>分区挂载(每台机子)</h2><p>查看新磁盘,一般会看到磁盘名称<code>/dev/sdb</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">fdisk</span> <span class="token parameter variable">-l</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 将下载的文件变成可执行</p>
-<pre class="line-numbers language-none"><code class="language-none">chmod +x &#x2F;mnt&#x2F;data&#x2F;minio<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>对磁盘进行分区</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">fdisk</span> /dev/sdb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>启动：         (不设置密码就是默认 minioadmin/minioadmin)</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;mnt&#x2F;data&#x2F;minio server &#x2F;mnt&#x2F;data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>会有提示输入参数</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">command</span> <span class="token punctuation">(</span>m <span class="token keyword">for</span> <span class="token builtin class-name">help</span><span class="token punctuation">)</span>:n <span class="token comment"># 分区</span>
+Select <span class="token punctuation">(</span>default p<span class="token punctuation">)</span>:p <span class="token comment"># 主分区</span>
+Partition number<span class="token punctuation">(</span><span class="token number">1</span>-4<span class="token punctuation">)</span>:enter <span class="token comment"># 默认就可以只能4个主分区</span>
+First cylinder <span class="token punctuation">(</span><span class="token number">1</span>-15908,default <span class="token number">1</span><span class="token punctuation">)</span>:enter <span class="token comment"># 默认</span>
+Last sector, +sectors or +size<span class="token punctuation">&#123;</span>K,M,G,T,P<span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token number">2048</span>-10485759， default <span class="token number">10485759</span><span class="token punctuation">)</span>:+2G <span class="token comment"># 分区大小,磁盘大小必须>1G</span>
+<span class="token builtin class-name">command</span> <span class="token punctuation">(</span>m <span class="token keyword">for</span> <span class="token builtin class-name">help</span><span class="token punctuation">)</span>:w <span class="token comment"># 保存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>后台指定9000端口启动：</p>
-<pre class="line-numbers language-none"><code class="language-none">nohup &#x2F;mnt&#x2F;data&#x2F;minio server  --address :9000 --console-address :9001 &#x2F;mnt&#x2F;data&#x2F; &gt; &#x2F;mnt&#x2F;data&#x2F;minio.log &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>格式化磁盘</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkfs.ext4 /dev/sdb1
+mkfs.ext4 /dev/sdb2
+mkfs.ext4 /dev/sdb3
+mkfs.ext4 /dev/sdb4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="docker方式："><a href="#docker方式：" class="headerlink" title="docker方式："></a>docker方式：</h2><pre class="line-numbers language-none"><code class="language-none">docker run -d \
-  -p 8900:9000 \
-  -p 8901:9001 \
-  --name minio2 \
-  -v ~&#x2F;var&#x2F;local&#x2F;environment&#x2F;data:&#x2F;data \
-  -e &quot;MINIO_ROOT_USER&#x3D;root&quot; \
-  -e &quot;MINIO_ROOT_PASSWORD&#x3D;minio123456&quot; \
-  minio&#x2F;minio server &#x2F;data --console-address &quot;:8901&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>挂载</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mount</span> /dev/sdb1 /home/minio/data/data1
+<span class="token function">mount</span> /dev/sdb2 /home/minio/data/data2
+<span class="token function">mount</span> /dev/sdb3 /home/minio/data/data3
+<span class="token function">mount</span> /dev/sdb4 /home/minio/data/data4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="spring-boot的整合"><a href="#spring-boot的整合" class="headerlink" title="spring boot的整合"></a>spring boot的整合</h1><p>pom加入minio依赖</p>
-<pre class="line-numbers language-none"><code class="language-none"> &lt;dependency&gt;
-      &lt;groupId&gt;io.minio&lt;&#x2F;groupId&gt;
-      &lt;artifactId&gt;minio&lt;&#x2F;artifactId&gt;
-      &lt;version&gt;8.4.5&lt;&#x2F;version&gt;
-&lt;&#x2F;dependency&gt;
- 
-&lt;dependency&gt;
-    &lt;groupId&gt;com.squareup.okhttp3&lt;&#x2F;groupId&gt;
-    &lt;artifactId&gt;okhttp&lt;&#x2F;artifactId&gt;
-    &lt;version&gt;4.10.0&lt;&#x2F;version&gt;
-&lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
+<p>Minio默认9000端口，在配置文件中加入–address “:9029” 可更改端口</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>MINIO_ACCESS_KEY</code>: 用户名，长度最小是5个字符</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>MINIO_SECRET_KEY</code>: 密码，密码不能设置过于简单，不然minio会启动失败，长度最小是8个字符</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>--config-dir</code>: 指定集群配置文件目录</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>--address</code>: api的端口，默认是9000</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>--console-address</code>: web端口，默认随机</li>
+</ul>
+</blockquote>
+<h3 id="编写启动脚本"><a href="#编写启动脚本" class="headerlink" title="编写启动脚本"></a>编写启动脚本</h3><blockquote>
+<p><code>vim /home/minio/run/run.sh</code></p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">MINIO_ROOT_USER</span><span class="token operator">=</span>admin
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">MINIO_ROOT_PASSWORD</span><span class="token operator">=</span>admin123456
 
-<p>yml文件加入配置</p>
-<pre class="line-numbers language-none"><code class="language-none">minio:
-  endpoint: http:&#x2F;81.68.119.53&#x2F;:9000
-  accessKey: masterminio
-  secretKey: masterminio
-  bucketName: wmy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 在每台机器上都执行该文件，即以分布式的方式启动了MINIO</span>
+<span class="token comment"># --address ":9000" 挂载9001端口为api端口（如Java客户端）访问的端口</span>
+<span class="token comment"># --console-address ":9000" 挂载9000端口为web端口； </span>
+/home/minio/app/minio server <span class="token parameter variable">--address</span> <span class="token string">":9000"</span> --console-address <span class="token string">":9001"</span> --config-dir /home/minio/config <span class="token punctuation">\</span>
+http://local-168-182-110/home/minio/data/data1 <span class="token punctuation">\</span>
+http://local-168-182-110/home/minio/data/data2 <span class="token punctuation">\</span>
+http://local-168-182-110/home/minio/data/data3 <span class="token punctuation">\</span>
+http://local-168-182-110/home/minio/data/data4 <span class="token punctuation">\</span>
 
-<p>后端代码编写</p>
-<pre class="line-numbers language-none"><code class="language-none">@Configuration
-@Slf4j
-public class MinioClientConfig &#123;
- 
-    @Value(&quot;$&#123;minio.endpoint&#125;&quot;)
-    private String endpoint;
- 
-    @Value(&quot;$&#123;minio.accessKey&#125;&quot;)
-    private String accessKey;
- 
-    @Value(&quot;$&#123;minio.secretKey&#125;&quot;)
-    private String secretKey;
- 
-    @Value(&quot;$&#123;minio.bucketName&#125;&quot;)
-    private String bucketName;
- 
-    @Bean
-    public MinioClient minioClient() &#123;
-        log.info(&quot;endpoint&#x3D;&#123;&#125;  ,  accessKey&#x3D;&#123;&#125;  ,secretKey&#x3D;&#123;&#125;&quot;, endpoint, accessKey, secretKey);
-        return MinioClient.builder().credentials(accessKey, secretKey).endpoint(endpoint).build();
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+http://local-168-182-111/home/minio/data/data1 <span class="token punctuation">\</span>
+http://local-168-182-111/home/minio/data/data2 <span class="token punctuation">\</span>
+http://local-168-182-111/home/minio/data/data3 <span class="token punctuation">\</span>
+http://local-168-182-111/home/minio/data/data4 <span class="token operator">></span> /home/minio/logs/minio_server.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>上传文件工具类</p>
-<pre class="line-numbers language-none"><code class="language-none">@Component
-public class MinioUtils &#123;
- 
-    @Autowired
-    private MinioClient minioClient;
- 
- 
-    &#x2F;**
-     * 判断桶是否存在
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public boolean bucketExists(String bucketName) &#123;
-        return minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
-    &#125;
- 
- 
-    &#x2F;**
-     * 创建桶
-     * @param bucketName
-     * 获取全部的桶  minioClient.listBuckets();
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public void createBucket(String bucketName) &#123;
-        if (!minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) &#123;
-            minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
-        &#125;
-    &#125;
- 
- 
-    &#x2F;**
-     * 根据bucketName获取信息
-     * @param bucketName bucket名称
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public Optional&lt;Bucket&gt; getBucket(String bucketName) &#123;
-        return minioClient.listBuckets().stream().filter(b -&gt; b.name().equals(bucketName)).findFirst();
-    &#125;
- 
-    &#x2F;**
-     * 根据bucketName删除信息
-     * @param bucketName bucket名称
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public  void removeBucket(String bucketName) &#123;
-        minioClient.removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
-    &#125;
- 
-    &#x2F;**
-     * 获取文件流
-     * @param bucketName bucket名称
-     * @param objectName 文件名称
-     * @return 二进制流
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public InputStream getObject(String bucketName, String objectName) &#123;
-        return minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(objectName).build());
-    &#125;
- 
- 
-    &#x2F;**
-     * 上传本地文件
-     * @param bucketName 存储桶
-     * @param objectName 对象名称
-     * @param fileName   本地文件路径
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public  ObjectWriteResponse putObject(String bucketName, String objectName, String fileName) &#123;
-        if(!bucketExists(bucketName))&#123;
-           createBucket(bucketName);
-        &#125;
-        return minioClient.uploadObject(UploadObjectArgs.builder().bucket(bucketName).object(objectName).filename(fileName).build());
-    &#125;
- 
-    &#x2F;**
-     * 通过流上传文件
-     * @param bucketName  存储桶
-     * @param objectName  文件对象
-     * @param inputStream 文件流
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public  ObjectWriteResponse putObject(String bucketName, String objectName, InputStream inputStream) &#123;
-        if(!bucketExists(bucketName))&#123;
-            createBucket(bucketName);
-        &#125;
-        return minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).object(objectName).stream(inputStream, inputStream.available(), -1).build());
-    &#125;
- 
- 
-    &#x2F;**
-     * 單個文件上傳遞
-     * @param bucketName
-     * @param multipartFile
-     * @return
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public   String   uploadFileSingle(String  bucketName,MultipartFile multipartFile )  &#123;
-        if(!bucketExists(bucketName))&#123;
-            createBucket(bucketName);
-        &#125;
-        String fileName &#x3D; multipartFile.getOriginalFilename();
-        String[] split &#x3D; fileName.split(&quot;\\.&quot;);
-        if (split.length &gt; 1) &#123;
-            fileName &#x3D; split[0] + &quot;_&quot; + System.currentTimeMillis() + &quot;.&quot; + split[1];
-        &#125; else &#123;
-            fileName &#x3D; fileName + System.currentTimeMillis();
-        &#125;
-        InputStream in &#x3D; null;
-        try &#123;
-            in &#x3D; multipartFile.getInputStream();
-            minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).object(fileName).stream(in, in.available(), -1).contentType(multipartFile.getContentType()).build());
-        &#125; catch (Exception e) &#123;
-            e.printStackTrace();
-        &#125; finally &#123;
-            if (in !&#x3D; null) &#123;
-                try &#123;
-                    in.close();
-                &#125; catch (IOException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;
-        return  getUploadObjectUrl(bucketName,fileName, 7*24*60*60);
-    &#125;
- 
- 
-    &#x2F;**
-     * description: 上传文件
-     * @param multipartFile
-     * @return: java.lang.String
-     *&#x2F;
-    public List&lt;String&gt; uploadFileBatch(String  bucketName,MultipartFile[] multipartFile) &#123;
-        if(!bucketExists(bucketName))&#123;
-            createBucket(bucketName);
-        &#125;
-        List&lt;String&gt; names &#x3D; new ArrayList&lt;&gt;();
-        for (MultipartFile file : multipartFile) &#123;
-            try &#123;
-                String fileName &#x3D; file.getOriginalFilename();
-                uploadFileSingle(bucketName,file);
-                names.add(fileName);
-            &#125;catch (Exception e)&#123;
-                e.printStackTrace();
-            &#125;
-        &#125;
-        return names;
-    &#125;
- 
- 
-    &#x2F;**
-     * 获取文件外链
-     * @param bucketName bucket名称
-     * @param objectName 文件名称
-     * @param expires    过期时间 &lt;&#x3D;7 秒级
-     * @return url
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public  String getUploadObjectUrl(String bucketName, String objectName, Integer expires)  &#123;
-        return minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder().method(Method.PUT).bucket(bucketName).object(objectName).expiry(expires).build());
-    &#125;
- 
-    &#x2F;**
-     * 下载文件
-     * bucketName:桶名
-     * @param fileName: 文件名
-     *&#x2F;
-    @SneakyThrows(Exception.class)
-    public  void download(String  bucketName,String fileName, HttpServletResponse response) &#123;
-        &#x2F;&#x2F; 获取对象的元数据
-        StatObjectResponse  stat &#x3D; minioClient.statObject(StatObjectArgs.builder().bucket(bucketName).object(fileName).build());
-        response.setContentType(stat.contentType());
-        response.setCharacterEncoding(&quot;UTF-8&quot;);
-        response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename&#x3D;&quot; + URLEncoder.encode(fileName, &quot;UTF-8&quot;));
-        InputStream is &#x3D; minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(fileName).build());
-        IOUtils.copy(is, response.getOutputStream());
-        is.close();
-    &#125;
- 
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>下面脚本复制时 \ 后不要有空格，还有就是上面的目录是对应的一块磁盘，而非简单的在/home/minio/data目录下创建四个目录，要不然会报如下错误，看提示以为是root权限问题<code>part of root disk, will not be used (*errors.errorString)</code></p>
+</blockquote>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 在每台机器上都执行该文件，即以分布式的方式启动了MINIO</span>
+<span class="token function">sh</span> /home/minio/run/run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>上传接口开发</p>
-<pre class="line-numbers language-none"><code class="language-none">@SneakyThrows
-@PostMapping(&quot;&#x2F;uploadFile&quot;)
-@ResponseBody
-public  String  uploadFile(@RequestParam(&quot;file&quot;)MultipartFile  multipartFile  )&#123;
-    log.info(&quot;uploadFile  ----   -----  start &quot;);
-    String imgPath &#x3D; minioUtils.uploadFileSingle(bucketName, multipartFile);
-    log.info(&quot;uploadFile  ----   -----  end &#123;&#125;&quot;,imgPath);
-    return   imgPath;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="添加或修改minio-service，通过systemctl启停服务（推荐）"><a href="#添加或修改minio-service，通过systemctl启停服务（推荐）" class="headerlink" title="添加或修改minio.service，通过systemctl启停服务（推荐）"></a>添加或修改minio.service，通过systemctl启停服务（推荐）</h4><blockquote>
+<p><code>vim /etc/systemd/system/minio.service</code></p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>Unit<span class="token punctuation">]</span>
+<span class="token assign-left variable">Description</span><span class="token operator">=</span>Minio <span class="token function">service</span>
+<span class="token assign-left variable">Documentation</span><span class="token operator">=</span>https://docs.minio.io/
 
-<p>前端代码编写</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;title&gt;测试Minio上传文件&lt;&#x2F;title&gt;
-    &lt;style&gt;
-        a.upload-img &#123;
-            width: 165px;
-            display: inline-block;
-            margin-bottom: 10px;
-            text-align: center;
-            height: 37px;
-            line-height: 37px;
-            font-size: 14px;
-            color: #FFFFFF;
-            background-color: #f38e81;
-            border-radius: 3px;
-            text-decoration: none;
-            cursor: pointer;
-            border: 0px #fff solid;
-            box-shadow: 0px 0px 5px #B0B0B0;
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
- 
-   &lt;div style&#x3D;&quot;width: 100%;flex: auto&quot;&gt;
-      &lt;form id&#x3D;&quot;img-form&quot;&gt;
-          &lt;a href&#x3D;&quot;javascript:void(0)&quot; class&#x3D;&quot;upload-img&quot;&gt;&lt;label for&#x3D;&quot;inputImage&quot;&gt;上传图像&lt;&#x2F;label&gt; &lt;&#x2F;a&gt;
-          &lt;input  onchange&#x3D;&quot;doUpload()&quot; type&#x3D;&quot;file&quot; name&#x3D;&quot;file&quot; id&#x3D;&quot;inputImage&quot; accept&#x3D;&quot;image&#x2F;*&quot;&#x2F;&gt;
-      &lt;&#x2F;form&gt;
-       &lt;img  height&#x3D;&quot;120px&quot; style&#x3D;&quot;margin-left: 20px&quot; &gt;
-   &lt;&#x2F;div&gt;
- 
-   &lt;script&gt;
-       let  doUpload&#x3D;()&#x3D;&gt;&#123;
-           console.log(&quot;1---&gt; start  upload &quot;);
-           let file &#x3D;  document.getElementById(&quot;inputImage&quot;).files[0];
-           if (&#x2F;^image\&#x2F;\w+$&#x2F;.test(file.type)) &#123;
-               let form &#x3D; document.getElementById(&quot;img-form&quot;);
-               let formData &#x3D; new FormData(form);
-               let oReq &#x3D; new XMLHttpRequest();
-               oReq.open(&quot;POST&quot;, &quot;http:&#x2F;&#x2F;127.0.0.1:9055&#x2F;uploadFile&quot;, true);
-               oReq.send(formData);
-               oReq.onload &#x3D; function(oEvent) &#123;
-                   if(oReq.status &#x3D;&#x3D; 200) &#123;
-                       alert(&quot;Uploaded Success&quot;);
-                       console.log(&quot;1---&gt; end  upload &quot;,oReq.response)
-                   &#125;
-               &#125;
-           &#125;
-       &#125;
- 
-   &lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+<span class="token assign-left variable">WorkingDirectory</span><span class="token operator">=</span>/home/minio
+<span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>/home/minio/run/run.sh
 
+<span class="token assign-left variable">Restart</span><span class="token operator">=</span>on-failure
+<span class="token assign-left variable">RestartSec</span><span class="token operator">=</span><span class="token number">5</span>
 
+<span class="token punctuation">[</span>Install<span class="token punctuation">]</span>
+<span class="token assign-left variable">WantedBy</span><span class="token operator">=</span>multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x /etc/systemd/system/minio.service <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x /home/minio/appt/minio <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x /home/minio/run/run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="启动集群（每台）"><a href="#启动集群（每台）" class="headerlink" title="启动集群（每台）"></a>启动集群（每台）</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> <span class="token comment">#重新加载服务</span>
+systemctl daemon-reload
+<span class="token comment">#启动服务</span>
+systemctl start minio
+<span class="token comment">#加入自启动</span>
+systemctl <span class="token builtin class-name">enable</span> minio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -812,7 +646,7 @@ public  String  uploadFile(@RequestParam(&quot;file&quot;)MultipartFile  multipa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lqs-1.github.io/2023/03/09/minio-de-da-jian-yu-springboot-de-zheng-he/">https://lqs-1.github.io/2023/03/09/minio-de-da-jian-yu-springboot-de-zheng-he/</a>
+                    <a href="https://lqs-1.github.io/2023/03/16/minio-ji-qun-da-jian/">https://lqs-1.github.io/2023/03/16/minio-ji-qun-da-jian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -850,8 +684,8 @@ public  String  uploadFile(@RequestParam(&quot;file&quot;)MultipartFile  multipa
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/storage/">
-                                    <span class="chip bg-color">storage</span>
+                                <a href="/tags/minio/">
+                                    <span class="chip bg-color">minio</span>
                                 </a>
                             
                         </div>
@@ -1021,46 +855,48 @@ public  String  uploadFile(@RequestParam(&quot;file&quot;)MultipartFile  multipa
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/03/09/ubuntu-an-zhuang-hou-di-yi-bu/">
+                <a href="/2023/03/16/minio-ji-qun-da-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="ubuntu安装后第一步">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="minio集群搭建">
                         
-                        <span class="card-title">ubuntu安装后第一步</span>
+                        <span class="card-title">minio集群搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ubuntu安装后第一步
+                            minio集群搭建
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ubuntu/" class="post-category">
-                                    ubuntu
+                            <a href="/categories/storage/" class="post-category">
+                                    storage
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/os/">
-                        <span class="chip bg-color">os</span>
+                    <a href="/tags/minio/">
+                        <span class="chip bg-color">minio</span>
                     </a>
                     
                 </div>
@@ -1074,24 +910,24 @@ public  String  uploadFile(@RequestParam(&quot;file&quot;)MultipartFile  multipa
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/06/pg-ji-qun/">
+                <a href="/2023/03/10/chong-dian-shu-ju-ku/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="pg集群">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="重点数据库">
                         
-                        <span class="card-title">pg集群</span>
+                        <span class="card-title">重点数据库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            pg集群
+                            重点数据库
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-10
                             </span>
                         <span class="publish-author">
                             
@@ -1108,8 +944,8 @@ public  String  uploadFile(@RequestParam(&quot;file&quot;)MultipartFile  multipa
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9B%86%E7%BE%A4/">
-                        <span class="chip bg-color">集群</span>
+                    <a href="/tags/hot/">
+                        <span class="chip bg-color">hot</span>
                     </a>
                     
                 </div>
