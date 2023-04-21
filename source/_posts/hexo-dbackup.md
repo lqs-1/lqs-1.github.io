@@ -17,7 +17,7 @@ categories: 博客部署
 
 ## 换机操作前
 
-> 在仓库中创建一个hexo分支并设置为默认
+> 在仓库中创建一个hexo[`写作仓库`]分支并设置为默认
 
 > 在本地配置好ssh连接，并测试是否连通github
 
@@ -36,11 +36,17 @@ public/
 .deploy*/
 ```
 
-> git add .
+```shell
+git add .
+```
 
-> git commit -m "desc"
+```shel
+git commit -m "desc"
+```
 
-> git push origin
+```shell
+git push origin
+```
 
 ---
 
@@ -49,19 +55,51 @@ public/
 
 > 安装好Node
 
-> sudo npm install hexo-cli-g
+```shell
+sudo apt/yum/dnf/yay/pacman install node
+```
 
-> git cloen 备份仓库
+> 安装hexo依赖
 
-> cd xxx.github.io
+```shell
+sudo npm install hexo-cli -g
+```
 
-> npm install
+> 将写作仓库克隆
 
-> npm install hexo-deployer-git --save
+```shell
+git cloen `写作仓库`
+```
 
-> hexo g
+> 进入克隆下来得写作仓库
 
-> hexo d
+```shell
+cd xxx.github.io
+```
+
+> 安装node依赖
+
+```shell
+npm install
+```
+
+> 安装生成文章推送依赖
+
+```shell
+sudo npm install hexo-deployer-git --save
+```
+
+> 构建文章
+
+```shell
+hexo g
+```
+
+> 发布文章
+
+```shell
+hexo d
+```
 
 就可以开始写博客了
 
