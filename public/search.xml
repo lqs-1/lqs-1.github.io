@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>ubuntu分区教程</title>
+      <link href="/2023/05/05/ubuntu-fen-qu-jiao-cheng/"/>
+      <url>/2023/05/05/ubuntu-fen-qu-jiao-cheng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ubuntu桌面版安装分区教程"><a href="#ubuntu桌面版安装分区教程" class="headerlink" title="ubuntu桌面版安装分区教程"></a>ubuntu桌面版安装分区教程</h2><h3 id="制作ubuntu启动盘"><a href="#制作ubuntu启动盘" class="headerlink" title="制作ubuntu启动盘"></a>制作ubuntu启动盘</h3><p>1.去官网<a href="https://ubuntu.com/#download"><code>https://ubuntu.com/#download</code></a>下载<code>Ubuntu Desktop</code>的最新版本</p><p>2.去ventoy官网<a href="https://www.ventoy.net/cn/download.html"><code>https://www.ventoy.net/cn/download.html</code></a>下载启动盘制作工具</p><p>3.下载好ventoy之后，插上U盘，解压ventoy，双击Ventoy2Disk.ext将U盘制作程启动盘</p><p>4.将第一步下载好的ISO镜像文件复制到制作好的U盘中</p><p>5.重启系统，狂按你电脑进入Boot Manager的按键，不同品牌的按键有所不同</p><p>6.选择你的U盘，再选择你要安装的系统</p><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><blockquote><p>efi 逻辑分区 512MB-1024MB</p></blockquote><pre class="line-numbers language-text" data-language="text"><code class="language-text">因为是u盘的uefi启动，因此设置一个efi引导<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>swap 主分区 交换空间 大小为物理内存的1.5倍左右</p></blockquote><pre class="line-numbers language-text" data-language="text"><code class="language-text">如果物理内存在8G以下，则swap设置为物理内存一样的大小，如果超过8G，则一般设置为8G大小的虚拟内存就足够了。根据自身的使用需求，也可以适当增大swap大小<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>/ 逻辑分区 随便分</p></blockquote><pre class="line-numbers language-text" data-language="text"><code class="language-text">主要用来存放ubuntu系统文件。有固态硬盘的可以安在固态盘中<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p> /home 逻辑分区 随便分</p></blockquote><pre class="line-numbers language-text" data-language="text"><code class="language-text">存用户程序，一般在/usr/bin中存放发行版提供的程序，用户自行安装的程序默认安装到/usr/local/bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>/usr 逻辑分区 随便分</p></blockquote><pre class="line-numbers language-text" data-language="text"><code class="language-text">存放用户文件。这个分区尽量设置大一些，因为我安装了机械盘，因此分配了300g的存储空间给它<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> ubuntu </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> os </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>minio集群搭建</title>
       <link href="/2023/03/16/minio-ji-qun-da-jian/"/>
       <url>/2023/03/16/minio-ji-qun-da-jian/</url>
