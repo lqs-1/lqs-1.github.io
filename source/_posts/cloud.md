@@ -17,6 +17,12 @@ categories: 杂项
 
 > password: 20021218lqs
 
+### vps登录账号密码
+
+> username: root
+
+> password: Ro81pa0uB4L3AT7zvA
+
 ## 购买DomainName
 > [`namesilo`](https://www.namesilo.com/)
 
@@ -31,3 +37,10 @@ categories: 杂项
 
 > password: @20021218Lqs
 
+## oracle账号
+
+> [`https://www.oracle.com/`](https://www.oracle.com/)
+
+> username: liqisong2002@gmail.com
+
+> password: 20021218Lqs@
