@@ -33,7 +33,7 @@ mkdir /usr/local/redis/ && tar -zxvf redis-stable.tar.gz -C /usr/local/redis/
 
 > 编译redis
 
-···shell
+```shell
 make distclean && make # 清除之前的编译缓存再次编译
 ```
 

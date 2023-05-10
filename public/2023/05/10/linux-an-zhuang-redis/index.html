@@ -439,7 +439,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    147
+                    135
                 </div>
                 
 
@@ -484,12 +484,12 @@
 <blockquote>
 <p>编译redis</p>
 </blockquote>
-<p>···shell<br>make distclean &amp;&amp; make # 清除之前的编译缓存再次编译</p>
-<pre class="line-numbers language-none"><code class="language-none">
-&gt; 安装
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> distclean <span class="token operator">&amp;&amp;</span> <span class="token function">make</span> <span class="token comment"># 清除之前的编译缓存再次编译</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-&#96;&#96;&#96;shell
-make PREFIX&#x3D;&#x2F;usr&#x2F;local&#x2F;redis install # PREFIX不指定的话默认将命令安装到&#x2F;usr&#x2F;local&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>安装</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token assign-left variable">PREFIX</span><span class="token operator">=</span>/usr/local/redis <span class="token function">install</span> <span class="token comment"># PREFIX不指定的话默认将命令安装到/usr/local/bin</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>配置环境变量</p>

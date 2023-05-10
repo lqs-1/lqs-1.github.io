@@ -16,5 +16,14 @@ categories: Linux
 > 以`/etc/profile`为例
 
 ```shell
-# 只配置一个环境变量如java export JAVA_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 export PATH=$PATH:$JAVA_HOME/bin # 给PATH添加一个变量,$表示引用,这里可以使用配好的路径变量也可以直接写路径 # 配置多个环境变量 export JAVA_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 export REDIS_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 export MAVEN_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 export NODE_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 export PATH=$PATH:$JAVA_HOME/bin:$REDIS_HOME/bin:$MAVEN_HOME/bin:$NODE_HOME/bin # 配置多个环境变量的时候可以用`:`分割,放在同一行
+# 只配置一个环境变量如java 
+export JAVA_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径
+export PATH=$PATH:$JAVA_HOME/bin # 给PATH添加一个变量,$表示引用,这里可以使用配好的路径变量也可以直接写路径 
+
+# 配置多个环境变量 
+export JAVA_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 
+export REDIS_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 
+export MAVEN_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径
+export NODE_HOME=xxxxxxxxxxxxxxxx # 添加一个变量 路径 
+export PATH=$PATH:$JAVA_HOME/bin:$REDIS_HOME/bin:$MAVEN_HOME/bin:$NODE_HOME/bin # 配置多个环境变量的时候可以用`:`分割,放在同一行
 ```
