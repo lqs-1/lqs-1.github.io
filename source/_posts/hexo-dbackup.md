@@ -1,6 +1,6 @@
 ---
 title: hexo-dbackup
-top: true
+top: false
 cover: false
 toc: true
 mathjax: true
