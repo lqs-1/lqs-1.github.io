@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ubuntu静态ip配置, java,linux,spring,cloud">
+    <meta name="keywords" content="Windows安装nginx, java,linux,spring,cloud">
     <meta name="description" content="希望你可以记住我 | 记住我这样活过 | 这样在你身边呆过">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ubuntu静态ip配置 | SGzuibang</title>
+    <title>Windows安装nginx | SGzuibang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -279,12 +279,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ubuntu静态ip配置</h1>
+                    <h1 class="description center-align post-title">Windows安装nginx</h1>
                 </div>
             </div>
         </div>
@@ -400,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/nginx/">
+                                <span class="chip bg-color">nginx</span>
                             </a>
                         
                     </div>
@@ -412,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/ip/" class="post-category">
-                                ip
+                            <a href="/categories/windows/" class="post-category">
+                                windows
                             </a>
                         
                     </div>
@@ -425,21 +425,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-21
+                    2023-05-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-10
+                    2023-05-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    187
+                    95
                 </div>
                 
 
@@ -469,35 +469,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="静态ip的分配"><a href="#静态ip的分配" class="headerlink" title="静态ip的分配"></a>静态ip的分配</h2><p>以ubuntu为例</p>
-<h3 id="选自要查看的网卡"><a href="#选自要查看的网卡" class="headerlink" title="选自要查看的网卡"></a>选自要查看的网卡</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ifconfig</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+                <h2 id="Windows-Install-Nginx"><a href="#Windows-Install-Nginx" class="headerlink" title="Windows Install Nginx"></a>Windows Install Nginx</h2><h3 id="下载nginx"><a href="#下载nginx" class="headerlink" title="下载nginx"></a>下载nginx</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="http://nobibibi.top/somg/file/nginx/windows/nginx-1.24.0.zip"><code>下载Windows版的稳定版nginx</code></a>并且解压</p>
+</blockquote>
+<h3 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h3><blockquote>
+<ul>
+<li>方式一：直接双击<code>nginx.exe</code>，双击之后黑窗口一闪而过</li>
+</ul>
+</blockquote>
 <blockquote>
-<p>编辑系统中/etc/network/interfaces中，lo一般为回环地址，不要管他的配置，将要配置的网卡名字在配置一份，如下</p>
+<ul>
+<li>方式二：在<code>nginx.exe</code>目录下打开cmd，输入<code>start nginx</code></li>
+</ul>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
-<span class="token comment"># 上面有回环地址的配置，不用管</span>
-
-auto eth0
-iface eth0 inet static
-address <span class="token number">192.168</span>.1.11
-netmask <span class="token number">255.255</span>.255.0
-gateway <span class="token number">192.168</span>.1.1
-dns-nameservers <span class="token number">202.106</span>.0.20
-dns-nameservers <span class="token number">8.8</span>.8.8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="更改主机名"><a href="#更改主机名" class="headerlink" title="更改主机名"></a>更改主机名</h2><p>以ubuntu为例</p>
-<h3 id="更改hosts"><a href="#更改hosts" class="headerlink" title="更改hosts"></a>更改hosts</h3><blockquote>
-<p>vim /etc/hosts</p>
+<blockquote>
+<p>查看端口是否被占用<code>netstat -ano | findstr &quot;80&quot;</code></p>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1 newName<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="更改hostName-如果已经存在就删除"><a href="#更改hostName-如果已经存在就删除" class="headerlink" title="更改hostName,如果已经存在就删除"></a>更改hostName,如果已经存在就删除</h3><blockquote>
-<p>vim /etc/hostname</p>
+<blockquote>
+<p>重启在cmd中<code>nginx -s reload</code></p>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">newName<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="如果程序使用了nginx，一定要注意检查nginx全局块中的user"><a href="#如果程序使用了nginx，一定要注意检查nginx全局块中的user" class="headerlink" title="如果程序使用了nginx，一定要注意检查nginx全局块中的user"></a>如果程序使用了nginx，一定要注意检查nginx全局块中的user</h2><p>默认nobody，将user指令注释掉，或者配置成nobody的话所有用户都可以运行</p>
+<blockquote>
+<p>关闭服务<code>nginx -s reload</code>，在修改配置以后可以使用</p>
+</blockquote>
 
                 
             </div>
@@ -524,7 +517,7 @@ dns-nameservers <span class="token number">8.8</span>.8.8<span aria-hidden="true
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lqs-1.github.io/2023/02/21/gong-zuo-di-yi-tian/">https://lqs-1.github.io/2023/02/21/gong-zuo-di-yi-tian/</a>
+                    <a href="https://lqs-1.github.io/2023/05/19/windows-an-zhuang-nginx/">https://lqs-1.github.io/2023/05/19/windows-an-zhuang-nginx/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -562,8 +555,8 @@ dns-nameservers <span class="token number">8.8</span>.8.8<span aria-hidden="true
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/nginx/">
+                                    <span class="chip bg-color">nginx</span>
                                 </a>
                             
                         </div>
@@ -733,46 +726,48 @@ dns-nameservers <span class="token number">8.8</span>.8.8<span aria-hidden="true
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/02/22/pg/">
+                <a href="/2023/05/19/windows-an-zhuang-nginx/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="pg视图导入导出操作">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Windows安装nginx">
                         
-                        <span class="card-title">pg视图导入导出操作</span>
+                        <span class="card-title">Windows安装nginx</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            视图、表的备份和恢复
+                            Windows安装nginx
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/sql/" class="post-category">
-                                    sql
+                            <a href="/categories/windows/" class="post-category">
+                                    windows
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/postgresql/">
-                        <span class="chip bg-color">postgresql</span>
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
                     </a>
                     
                 </div>
@@ -786,31 +781,31 @@ dns-nameservers <span class="token number">8.8</span>.8.8<span aria-hidden="true
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/14/ba-gu-wen/">
+                <a href="/2023/05/17/githubpages-bu-shu-hexo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="八股文">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="GitHubPages部署Hexo">
                         
-                        <span class="card-title">八股文</span>
+                        <span class="card-title">GitHubPages部署Hexo</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            java面试八股文
+                            GitHubPages部署Hexo
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-category">
-                                    面试题
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
+                                    博客部署
                                 </a>
                             
                             
@@ -820,8 +815,8 @@ dns-nameservers <span class="token number">8.8</span>.8.8<span aria-hidden="true
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>

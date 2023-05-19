@@ -16,7 +16,10 @@ categories: Linux
 > 获取maven
 
 ```shell
+# 官方
 wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz
+# 或者
+wget http://nobibibi.top/somg/file/maven/apache-maven-linux-3.9.1-bin.tar.gz
 ```
 
 > 解压到`/usr/local/mvn/`

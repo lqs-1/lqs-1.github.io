@@ -16,7 +16,10 @@ categories: Linux
 > 下载稳定版Redis
 
 ```shell
+# 官网
 wget https://download.redis.io/redis-stable.tar.gz
+# 或者
+wget http://nobibibi.top/somg/file/redis/linux/redis-stable.tar.gz
 ```
 
 > 解压Redis到`/usr/local/redis/`

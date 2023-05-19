@@ -432,14 +432,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-05-10
+                    2023-05-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    700
+                    705
                 </div>
                 
 
@@ -485,11 +485,11 @@
 </blockquote>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/nginxInstallPackage
 <span class="token comment"># 下载openssl 支持nginx开通https的模块 非对称加密的工具(https://www.openssl.org/) 选择性下载</span>
-<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/openssl-1.1.1l.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> openssl-1.1.1l.tar.gz <span class="token parameter variable">-C</span> /usr/local/nginx/package/
+<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/linux/openssl-1.1.1l.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> openssl-1.1.1l.tar.gz <span class="token parameter variable">-C</span> /usr/local/nginx/package/
 <span class="token comment"># 下载zlib 是一款支持zlib压缩的模块(zlib.net) 必须下载</span>
-<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/zlib-1.2.11.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> zlib-1.2.11.tar.gz  <span class="token parameter variable">-C</span> /usr/local/nginx/package/
+<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/linux/zlib-1.2.11.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> zlib-1.2.11.tar.gz  <span class="token parameter variable">-C</span> /usr/local/nginx/package/
 <span class="token comment"># 下载pcre 是一个支持正则表达式的模块(www.pcre.org) 必须下载</span>
-<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/pcre-8.42.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> pcre-8.42.tar.gz  <span class="token parameter variable">-C</span> /usr/local/nginx/package/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/linux/pcre-8.42.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> pcre-8.42.tar.gz  <span class="token parameter variable">-C</span> /usr/local/nginx/package/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>命令安装依赖</p>
 </blockquote>
@@ -500,7 +500,7 @@
 </blockquote>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/nginxInstallPackage
 
-<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/nginx-1.20.2.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> nginx-1.20.2.tar.gz <span class="token parameter variable">-C</span> /usr/local/nginx/package/ <span class="token comment"># 下载nginx</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/linux/nginx-1.20.2.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> nginx-1.20.2.tar.gz <span class="token parameter variable">-C</span> /usr/local/nginx/package/ <span class="token comment"># 下载nginx</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>执行<code>configure</code></p>
@@ -522,7 +522,7 @@
 </blockquote>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/nginxInstallPackage
 
-<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/nginx-1.20.2.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> nginx-1.20.2.tar.gz <span class="token parameter variable">-C</span> /usr/local/nginx/package/ <span class="token comment"># 下载nginx</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">wget</span> http://nobibibi.top/somg/file/nginx/linux/nginx-1.20.2.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> nginx-1.20.2.tar.gz <span class="token parameter variable">-C</span> /usr/local/nginx/package/ <span class="token comment"># 下载nginx</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>执行<code>configure</code></p>
@@ -1161,7 +1161,7 @@ docker restart nginx # 重启<span aria-hidden="true" class="line-numbers-rows">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.9k</span>&nbsp;字
+                class="white-color">41k</span>&nbsp;字
             
             
             

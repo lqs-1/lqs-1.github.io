@@ -32,11 +32,11 @@ mkdir /home/nginxInstallPackage # 创建nginx安装包或者依赖包目录
 ```shell
 cd /home/nginxInstallPackage
 # 下载openssl 支持nginx开通https的模块 非对称加密的工具(https://www.openssl.org/) 选择性下载
-wget http://nobibibi.top/somg/file/nginx/openssl-1.1.1l.tar.gz && tar -zxvf openssl-1.1.1l.tar.gz -C /usr/local/nginx/package/
+wget http://nobibibi.top/somg/file/nginx/linux/openssl-1.1.1l.tar.gz && tar -zxvf openssl-1.1.1l.tar.gz -C /usr/local/nginx/package/
 # 下载zlib 是一款支持zlib压缩的模块(zlib.net) 必须下载
-wget http://nobibibi.top/somg/file/nginx/zlib-1.2.11.tar.gz && tar -zxvf zlib-1.2.11.tar.gz  -C /usr/local/nginx/package/
+wget http://nobibibi.top/somg/file/nginx/linux/zlib-1.2.11.tar.gz && tar -zxvf zlib-1.2.11.tar.gz  -C /usr/local/nginx/package/
 # 下载pcre 是一个支持正则表达式的模块(www.pcre.org) 必须下载
-wget http://nobibibi.top/somg/file/nginx/pcre-8.42.tar.gz && tar -zxvf pcre-8.42.tar.gz  -C /usr/local/nginx/package/
+wget http://nobibibi.top/somg/file/nginx/linux/pcre-8.42.tar.gz && tar -zxvf pcre-8.42.tar.gz  -C /usr/local/nginx/package/
 ```
 > 命令安装依赖
 ```shell
@@ -52,7 +52,7 @@ yum -y install pcre pcre-devel zlib openssl openssl-devel
 ```shell
 cd /home/nginxInstallPackage
 
-wget http://nobibibi.top/somg/file/nginx/nginx-1.20.2.tar.gz && tar -zxvf nginx-1.20.2.tar.gz -C /usr/local/nginx/package/ # 下载nginx
+wget http://nobibibi.top/somg/file/nginx/linux/nginx-1.20.2.tar.gz && tar -zxvf nginx-1.20.2.tar.gz -C /usr/local/nginx/package/ # 下载nginx
 ```
 
 > 执行`configure`
@@ -78,7 +78,7 @@ make && make install
 ```shell
 cd /home/nginxInstallPackage
 
-wget http://nobibibi.top/somg/file/nginx/nginx-1.20.2.tar.gz && tar -zxvf nginx-1.20.2.tar.gz -C /usr/local/nginx/package/ # 下载nginx
+wget http://nobibibi.top/somg/file/nginx/linux/nginx-1.20.2.tar.gz && tar -zxvf nginx-1.20.2.tar.gz -C /usr/local/nginx/package/ # 下载nginx
 ```
 
 > 执行`configure`
