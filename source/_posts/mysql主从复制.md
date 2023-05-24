@@ -43,7 +43,7 @@ service mysql restart
 
 > 登录mysql查看master信息
 ```shell
-show master status; # 这里面有一个Position，在配置从节点的时候会使用
+show master status; # 查看File和Position，在配置从节点的时候会使用
 ```
 
 ### 配置从节点

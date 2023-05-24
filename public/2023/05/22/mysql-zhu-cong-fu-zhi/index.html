@@ -432,14 +432,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-05-22
+                    2023-05-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    469
+                    466
                 </div>
                 
 
@@ -496,7 +496,7 @@ FLUSH PRIVILEGES<span class="token punctuation">;</span><span aria-hidden="true"
 <blockquote>
 <p>登录mysql查看master信息</p>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">show master status<span class="token punctuation">;</span> <span class="token comment"># 这里面有一个Position，在配置从节点的时候会使用</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">show master status<span class="token punctuation">;</span> <span class="token comment"># 查看File和Position，在配置从节点的时候会使用</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="配置从节点"><a href="#配置从节点" class="headerlink" title="配置从节点"></a>配置从节点</h3><blockquote>
 <p>在从节点的配置文件<code>my.cnf</code>中的<code>[mysqld]</code>块中修改或者添加配置</p>
