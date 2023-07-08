@@ -432,21 +432,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-05-24
+                    2023-07-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    466
+                    583
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -525,7 +525,20 @@ start slave<span class="token punctuation">;</span>
 show slave status <span class="token punctuation">\</span>G<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在主节点添加一条数据，再打开从节点对应的表，会发现已经同步好了</p>
+<h2 id="用户操作以及远程登陆"><a href="#用户操作以及远程登陆" class="headerlink" title="用户操作以及远程登陆"></a>用户操作以及远程登陆</h2><h3 id="修改root"><a href="#修改root" class="headerlink" title="修改root"></a>修改root</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">update user <span class="token builtin class-name">set</span> <span class="token assign-left variable">host</span><span class="token operator">=</span><span class="token string">'%'</span> where <span class="token assign-left variable">user</span><span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">;</span> <span class="token comment"># 修改user为远程用户</span>
+ALTER <span class="token environment constant">USER</span> <span class="token string">'root'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'123456'</span><span class="token punctuation">;</span> <span class="token comment"># 修改user密码</span>
+FLUSH PRIVILEGES<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="创建用户并授权"><a href="#创建用户并授权" class="headerlink" title="创建用户并授权"></a>创建用户并授权</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">CREATE <span class="token environment constant">USER</span> <span class="token string">'用户名'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'l2'</span><span class="token punctuation">;</span> <span class="token comment"># 创建用户</span>
+GRANT ALL on *.* to <span class="token string">'用户名'</span>@<span class="token string">'%'</span><span class="token punctuation">;</span> <span class="token comment"># 授权用户</span>
+GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'用户名'</span>@<span class="token string">'%'</span> WITH GRANT OPTION<span class="token punctuation">;</span><span class="token punctuation">;</span> <span class="token comment"># 授权用户，可以给别人授权</span>
+FLUSH PRIVILEGES<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">vim</span> /etc/mysql/mysql.conf.d/mysqld.cnf
+
+bind-address <span class="token operator">=</span> <span class="token number">0.0</span>.0.0
+
+<span class="token function">sudo</span> <span class="token function">service</span> mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1090,7 +1103,7 @@ show slave status <span class="token punctuation">\</span>G<span class="token pu
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">41.5k</span>&nbsp;字
+                class="white-color">41.6k</span>&nbsp;字
             
             
             

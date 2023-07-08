@@ -76,3 +76,30 @@ show slave status \G;
 
 ### 测试
 在主节点添加一条数据，再打开从节点对应的表，会发现已经同步好了
+
+
+## 用户操作以及远程登陆
+
+### 修改root
+```shell
+update user set host='%' where user='root'; # 修改user为远程用户
+ALTER USER 'root'@'%' IDENTIFIED BY '123456'; # 修改user密码
+FLUSH PRIVILEGES;
+```
+
+### 创建用户并授权
+```shell
+CREATE USER '用户名'@'%' IDENTIFIED BY 'l2'; # 创建用户
+GRANT ALL on *.* to '用户名'@'%'; # 授权用户
+GRANT ALL PRIVILEGES ON *.* TO '用户名'@'%' WITH GRANT OPTION;; # 授权用户，可以给别人授权
+FLUSH PRIVILEGES;
+``` 
+
+### 远程连接
+```shell
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+bind-address = 0.0.0.0
+
+sudo service mysql restart
+```
