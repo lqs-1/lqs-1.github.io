@@ -1,6 +1,6 @@
 ---
 title: theme-install
-top: true
+top: false
 cover: false
 toc: true
 mathjax: true

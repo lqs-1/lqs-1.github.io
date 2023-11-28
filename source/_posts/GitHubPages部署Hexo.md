@@ -1,6 +1,6 @@
 ---
 title: GitHubPages部署Hexo
-top: true
+top: false
 cover: false
 toc: true
 mathjax: true
