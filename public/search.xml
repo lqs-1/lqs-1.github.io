@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>V免签部署</title>
+      <link href="/2023/12/28/v-mian-qian-bu-shu/"/>
+      <url>/2023/12/28/v-mian-qian-bu-shu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="V免签"><a href="#V免签" class="headerlink" title="V免签"></a>V免签</h2><hr><h3 id="资源地址"><a href="#资源地址" class="headerlink" title="资源地址"></a>资源地址</h3><p><a href="https://github.com/szvone/vmqphp"><code>v免签官方源码</code></a></p><p><a href="https://pub-pce.oss-cn-chengdu.aliyuncs.com/public/tools/base.apk"><code>v免签安装监控端</code></a></p><h3 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h3><blockquote><ul><li>安装宝塔面板并安装 <code>nginx1.18</code>、<code>php7.3</code>、<code>mysql5.6</code></li></ul></blockquote><blockquote><ul><li>创建php项目绑定域名创建目录    将源码解压到项目目录下 再将运行目录设置为public</li></ul></blockquote><blockquote><ul><li>伪静态选择<code>thinkphp</code></li></ul></blockquote><blockquote><ul><li>默认文档中将<code>index.html</code>设置为第一个</li></ul></blockquote><blockquote><ul><li>打开网站路径<code>/config/database.php</code> 设置好你的mysql账号密码并保存</li></ul></blockquote><blockquote><ul><li>在数据库中导入源码包中的<code>vmq.sql</code></li></ul></blockquote><blockquote><ul><li>登录网站的用户名密码默认都是admin</li></ul></blockquote><blockquote><ul><li>手机上安装监控端就可以了 这样可以根据V免签的<code>api</code>对接项目</li></ul></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> pay </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pay </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VPN翻墙简介</title>
       <link href="/2023/11/28/vpn-fan-qiang-jian-jie/"/>
       <url>/2023/11/28/vpn-fan-qiang-jian-jie/</url>
