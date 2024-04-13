@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>机场教程</title>
+      <link href="/2024/04/13/ji-chang-jiao-cheng/"/>
+      <url>/2024/04/13/ji-chang-jiao-cheng/</url>
+      
+        <content type="html"><![CDATA[<h1 id="搭建V2board面板"><a href="#搭建V2board面板" class="headerlink" title="搭建V2board面板"></a>搭建V2board面板</h1><p><a href="https://docs.v2board.com/deploy/aapanel.html">官方教程</a></p><h1 id="下载-XrayR"><a href="#下载-XrayR" class="headerlink" title="下载 XrayR"></a>下载 XrayR</h1><p><a href="https://xrayr-project.github.io/XrayR-doc">官方文档</a></p><blockquote><p>一键安装脚本</p></blockquote><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">bash</span> <span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-Ls</span> https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="中转"><a href="#中转" class="headerlink" title="中转"></a>中转</h1><p><a href="https://board.chiyu.pro/">池雨转发</a></p><h1 id="打包成软件"><a href="#打包成软件" class="headerlink" title="打包成软件"></a>打包成软件</h1><p><a href="https://www.v2matrix.com/">在线打包</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> airport </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> airport </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>V免签部署</title>
       <link href="/2023/12/28/v-mian-qian-bu-shu/"/>
       <url>/2023/12/28/v-mian-qian-bu-shu/</url>
