@@ -12,10 +12,10 @@ categories: 杂项
 ---
 
 ## 谷歌邮箱
-liqisong2002@gmail.com
-qisomg@gmail.com
-lee7s.qs@gmail.com
-xianrenxh@gmail.com
+> liqisong2002@gmail.com
+> qisomg@gmail.com
+> lee7s.qs@gmail.com
+> xianrenxh@gmail.com
 
 ## 购买vps
 > [`racknerd`](https://racknerd.com/)
