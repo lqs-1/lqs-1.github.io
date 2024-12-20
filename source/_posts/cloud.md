@@ -10,6 +10,13 @@ summary: 服务器部署，宝塔面板，cloudflare域名托管，vps和doMainN
 tags: cloud
 categories: 杂项
 ---
+
+## 谷歌邮箱
+liqisong2002@gmail.com
+qisomg@gmail.com
+lee7s.qs@gmail.com
+xianrenxh@gmail.com
+
 ## 购买vps
 > [`racknerd`](https://racknerd.com/)
 
