@@ -28,8 +28,8 @@ categories: 机场推荐
 
 ### SsdAirport优惠码
 
-首次购买九折优惠码 SsdAirport9
-月付6折优惠码 SAYF-40 有效期12月27日前
+~~首次购买九折优惠码 SsdAirport9~~
+~~月付6折优惠码 SAYF-40 有效期12月27日前~~
 > 更多优惠请关注官网TG频道发布
 
 ### SsdAirport价格图
