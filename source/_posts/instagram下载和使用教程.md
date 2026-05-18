@@ -1,12 +1,12 @@
 ---
-title: instagram下载和使用教程
+title: Instagram下载和使用教程
 top: false
 cover: false
 toc: true
 mathjax: true
 date: 2025-08-03 15:14:46
 password:
-summary: instagram下载和使用教程
+summary: Instagram下载和使用教程
 tags: 社交媒体
 categories: 资源分享
 ---
