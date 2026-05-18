@@ -13,7 +13,8 @@ categories: 机场推荐
 
 ### 超级跑车-CJPC机场官网地址
 
-最新地址：[https://cjpaoche.top](https://cjpaoche.top)
+最新地址：[https://paocheyoo.com](https://paocheyoo.com)
+最新地址：[https://www.paocheyoo.com](https://www.paocheyoo.com)
 
 ### 超级跑车-CJPC机场官网TG频道
 

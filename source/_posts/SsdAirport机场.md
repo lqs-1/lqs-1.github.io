@@ -13,7 +13,8 @@ categories: 机场推荐
 
 ### SsdAirport机场官网地址
 
-最新地址：[https://bangpi.top](https://bangpi.top)
+最新地址：[https://ssdayoo.com](https://ssdayoo.com)
+最新地址：[https://www.ssdayoo.com](https://www.ssdayoo.com)
 
 ### SsdAirport机场官网TG频道
 

@@ -5,7 +5,7 @@ cover: false
 toc: true
 mathjax: true
 date: 2023-03-09 17:34:19
-password:
+password: 5c4aaf271c7c13b2372e84982f82f2cd279026950438dfc769c95dcabdfd2a87
 summary: ubuntu安装后第一步
 tags: os
 categories: ubuntu
