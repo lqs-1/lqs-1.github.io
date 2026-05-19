@@ -15,12 +15,12 @@ categories: 资源分享
 
 - 因为instagram是国外的软件，所以我们中国大陆的网络无法使用，这个时候，我们需要使用国外代理节点才可以使用，我会在下方推荐好用的代理机场。
 
-### 代理机场推荐
+### 机场VPN推荐
 
 - 下方两个代理机场选择一个即可
 
-[SsdAirport云官网地址](https://bangpi.top)
-[超级跑车-CJPC官网地址](https://cjpaoche.top)
+[SsdAirport云官网地址](https://ssdayoo.com)
+[超级跑车-CJPC官网地址](https://paocheyoo.com)
 
 - 不知道哪个好的可以看两个代理机场的节点和速度测试
 
