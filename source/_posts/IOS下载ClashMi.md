@@ -31,7 +31,7 @@ categories: 代理客户端下载
 
 > 下方视频加载太慢的话，可以抖音搜索注册美区ID的方法
 
-免费注册教程： [https://static.1224323.xyz/USappleid.mp4](https://static.1224323.xyz/USappleid.mp4)
+免费注册教程： [点击播放视频教程](https://static.1224323.xyz/static/videos/USappleid.mp4)
 
 > 教程文字解析
 
@@ -56,7 +56,7 @@ categories: 代理客户端下载
 
 > 搜索ClashMi并下载
 
-![](https://static.1224323.xyz/ClashMi.jpg)
+![](https://static.1224323.xyz/static/images/ClashMi.jpg)
 
 ## 使用ClashMi
 
@@ -64,29 +64,29 @@ categories: 代理客户端下载
 
 > 打开 ClashMi → 点击 核心设置 → 点击 覆写 → 选择 不覆写
 
-![](https://static.1224323.xyz/clashmifuxie.jpg)
+![](https://static.1224323.xyz/static/images/clashmifuxie.jpg)
 ## 使用方法
 
 ### 第一步：导入订阅
 > 在**仪表盘**中找到**一键订阅**，复制订阅地址<br>
 
-![](https://static.1224323.xyz/sddr.png)<br>
+![](https://static.1224323.xyz/static/images/copysburl.png)<br>
 
 > 打开 ClashMi → 点击 我的配置 → 点击 + → 选择 从剪切板导入 → 备注填写机场名字即可→ 右上角保存
 
-![](https://static.1224323.xyz/clashmidaoru.jpg)
+![](https://static.1224323.xyz/static/images/clashmidaoru.jpg)
 
 ### 第二步：开启代理
 
 > ClashMi首页点击右上角开关
 
-![](https://static.1224323.xyz/clashmistart.jpg)
+![](https://static.1224323.xyz/static/images/clashmistart.jpg)
 
 ### 第三步：测速选择节点
 
 > 点击代理 → 右上角测速 → 测速结束后选择第一个 → 选则你想使用的节点
 
-![](https://static.1224323.xyz/clashmicesuxuanzejiedian.jpg)
+![](https://static.1224323.xyz/static/images/clashmicesuxuanzejiedian.jpg)
 
 ## 代理模式说明
 

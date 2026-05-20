@@ -29,9 +29,6 @@ categories: 代理客户端下载
 ## 下载Flclash（IOS请下载ClashMi使用）
 
 
-<font color="red">如果导入不跳转或者怎么样，请第一时间刷新再操作</font><br>
-
-
 - 1.安装不了的把你们的安卓手机或者电脑的什么安装守护、防火墙等等这些没用的东西关掉，自己安装不了不要找我们问。另外华为手机如果安装不了软件，也别找我们，我们也不知道他们系统用什么，可以试着安装安卓版本的，如果不行，请自己解决。或者自己去找一个能够使用vless节点的客户端也可以。
 
 - 2.下载对应的版本，根据你自己系统的内核，安装下载问题，我们不予以任何回复，这么简单，不会就问百度、豆包等等。
@@ -67,30 +64,30 @@ categories: 代理客户端下载
 
 仪表盘 -> 一键订阅 -> 点击包含`Clash`字样的导入项（因为Flclash会被识别为Clash、ClashMeta、ClashVerge等）
 
-![](https://static.1224323.xyz/ssd/flclashwindr.png)
+![](https://static.1224323.xyz/static/images/flclashwindr.png)
 
 跳转到Flclash之后点击”确定“
 
-![](https://static.1224323.xyz/ssd/flclashwinsave.png)
+![](https://static.1224323.xyz/static/images/flclashwinsave.png)
 
 ### 选择订阅配置
 
 点击右侧”配置“选择右侧订阅配置中刚刚导入的订阅
 
-![](https://static.1224323.xyz/ssd/flclashwinselect.png)
+![](https://static.1224323.xyz/static/images/flclashwinselect.png)
 
 ### 测速选择节点
 
 点击”代理“，再点击右下角测速按钮，最后选择你要是用的节点
 
-![](https://static.1224323.xyz/ssd/flclashwincesu.png)
+![](https://static.1224323.xyz/static/images/flclashwincesu.png)
 
 ### 开启代理
 
 点击”仪表盘“，如图操作即可开启代理。
 
-![](https://static.1224323.xyz/ssd/flclashwinstart.png)
+![](https://static.1224323.xyz/static/images/flclashwinstart.png)
 
-开启之后会限时节点的ip
+开启之后会显示节点的ip
 
-![](https://static.1224323.xyz/ssd/flclashwinstartdone.png)
+![](https://static.1224323.xyz/static/images/flclashwinstartdone.png)
