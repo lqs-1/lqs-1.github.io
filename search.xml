@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>订阅链接使用说明</title>
+      <link href="/2026/07/19/ding-yue-lian-jie-shi-yong-shuo-ming/"/>
+      <url>/2026/07/19/ding-yue-lian-jie-shi-yong-shuo-ming/</url>
+      
+        <content type="html"><![CDATA[<h3 id="订阅有效期"><a href="#订阅有效期" class="headerlink" title="订阅有效期"></a>订阅有效期</h3><blockquote><p>5分钟内使用两次就销毁并重置。</p></blockquote><ul><li><p>情况一：5分钟内只是用了一次，订阅链接永不销毁，第6分钟重新计数。</p></li><li><p>情况二：5分钟内使用了两次，订阅链接销毁并重置并且重新计数，第三次使用会直接报错（403错误），解决方案是刷新仪表盘获取新订阅链接。</p></li></ul><blockquote><p>注意：使用的意思是订阅导入软件的次数以及软件内更新订阅的次数，如果已经导入到软件内，因为频繁更新导致订阅链接自毁，不要慌，你可以选择从新导入，也可以不重新导入，不影响正常使用，等你续费或者购买其他套餐的时候，再导入一次就可以了。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 订阅 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 使用说明 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机场搭建</title>
       <link href="/2026/05/18/ji-chang-da-jian/"/>
       <url>/2026/05/18/ji-chang-da-jian/</url>
